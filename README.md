@@ -2,10 +2,12 @@
 This personal portfolio website showcases my professional work and projects. It features an integrated blog where I share insights and stories about my hobbies. The website is equipped with an admin dashboard that allows for seamless management of blog and portfolio content, reflecting my technical expertise and personal interests.
 
 ## Features
+- Landing Page showcasing the developer
 - Interactive portfolio showcasing projects
 - Integrated blog for sharing hobbies and insights
 - Admin dashboard for content management
 - Responsive design for optimal viewing on all devices
+- Deployment and Containerization
 
 ## Tech Stack
 **Frontend:**
