@@ -15,7 +15,7 @@ This personal portfolio website showcases my professional work and projects. It 
 - React
 - Next.js
 - Axios/Fetch/AJAX
-- Bootstrap
+- ~~Bootstrap~~ Tailwind CSS
 - Webpack and Babel
 - JQuery
 
