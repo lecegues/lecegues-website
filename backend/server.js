@@ -1,9 +1,14 @@
+// Import required modules
 const express = require('express');
-const app = express();
-const port = process.env.PORT || 8080;
+const mongoose = require('mongoose');
 
-// Middleware to parse JSON requests
+// Initialize modules modules
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Global vars
+const port = process.env.PORT || 8080;
 
 // Basic route for testing the server
 app.get('/', (req, res) => {
