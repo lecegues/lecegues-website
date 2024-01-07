@@ -8,7 +8,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 const HeroSection = () => {
     return (
-        <section>
+        <section className>
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
                 {/* First 7 columns (out of 12) */}
