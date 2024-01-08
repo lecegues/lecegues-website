@@ -1,18 +1,19 @@
+/**
+ * Hero Section of the Landing Page
+ */
 'use client'
 
 import React from 'react';
 import '../../styles/LandingPage.css';
 import { TypeAnimation } from 'react-type-animation';
 
-
-
 const HeroSection = () => {
     return (
-        <section>
+        <section >
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
                 {/* First 7 columns (out of 12) */}
-                <div className="col-span-7 place-self-center">
+                <div className="col-span-7 place-self-center font-mono font-normal">
 
                     {/* Header*/ }
                     <h1 className="text-[#37444B] mb-2 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
@@ -20,6 +21,8 @@ const HeroSection = () => {
                         <br></br>
                         and I love to
                         <br></br>
+
+                        {/* Animated Header Typing Animation */}
                         <div className="text-[#4A90E2] mt-1">
                             <TypeAnimation
                                 sequence={[
@@ -41,8 +44,6 @@ const HeroSection = () => {
                         </div>
                     </h1>
                     
-                    
-
                     {/* SubHeader */}
                     <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sed incidunt deleniti labore rem enim aspernatur nesciunt dolorum sequi voluptatum. Quae aut sint suscipit magnam molestias aspernatur beatae, soluta culpa.
