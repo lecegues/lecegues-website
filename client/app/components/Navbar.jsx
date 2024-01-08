@@ -39,7 +39,7 @@ const Navbar = () =>{
             {/* Holds navbar  */}
             <div className=" flex flex-wrap items-center justify-between px-5 py-3">
 
-                <Link href={"/"} className="text-1xl md:text-3xl text-[#37444B] font-semibold">Lecegues</Link>
+                <Link href={"/"} className="text-1xl md:text-2xl text-[#37444B] font-sans font-semibold">Lecegues</Link>
 
                 {/* For Mobile Menu */}
                 <div className="mobile-menu block md:hidden">
@@ -60,7 +60,7 @@ const Navbar = () =>{
                 </div>
 
                 {/* For Website Menu */}
-                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: '600'}} className="menu hidden md:block md:w-auto" id="navbar">
+                <div className="menu hidden md:block md:w-auto font-mono font-semibold" id="navbar">
                     <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
                         {
                             navLinks.map((link, index) => (
