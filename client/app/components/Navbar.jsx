@@ -8,8 +8,12 @@ import MenuOverlay from './MenuOverlay';
 
 const navLinks = [
     {
-        title: "About",
-        path: "#about",
+        title: "Home",
+        path: "#Home",
+    },
+    {
+        title: "About Me",
+        path: "#about-me",
     },
     {
         title: "Projects",
@@ -18,6 +22,10 @@ const navLinks = [
     {
         title: "Contact",
         path: "#contact",
+    },
+    {
+        title: "Blog",
+        path: "#blog",
     }
 
 ]
@@ -27,8 +35,13 @@ const Navbar = () =>{
     const [navbarOpen, setNavbarOpen] = useState(false);
     return (
         <nav className="fixed top-0 left-0 right-0 z-10 bg-white">
-            <div className="flex flex-wrap items-center justify-between mx-auto px-4 py-2">
-                <Link href={"/"} className="text-2xl md:text-5xl text-black font-semibold">LOGO</Link>
+
+            {/* Holds navbar  */}
+            <div className=" flex flex-wrap items-center justify-between px-5 py-3">
+
+                <Link href={"/"} className="text-1xl md:text-3xl text-[#37444B] font-semibold">Lecegues</Link>
+
+                {/* For Mobile Menu */}
                 <div className="mobile-menu block md:hidden">
 
                     {/* When navbar is closed */}
@@ -45,7 +58,9 @@ const Navbar = () =>{
                     )}
 
                 </div>
-                <div className="menu hidden md:block md:w-auto" id="navbar">
+
+                {/* For Website Menu */}
+                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: '600'}} className="menu hidden md:block md:w-auto" id="navbar">
                     <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
                         {
                             navLinks.map((link, index) => (
@@ -55,6 +70,10 @@ const Navbar = () =>{
                             ))
                         }
                     </ul>
+                </div>
+
+                <div className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200">
+                    Log in
                 </div>
             </div>
             {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
