@@ -34,7 +34,7 @@ const navLinks = [
 const Navbar = () =>{
     const [navbarOpen, setNavbarOpen] = useState(false);
     return (
-        <nav className="fixed top-0 left-0 right-0 z-10 bg-white">
+        <nav className="fixed top-0 left-0 right-0 z-10 bg-white pb-3">
 
             {/* Holds navbar  */}
             <div className=" flex flex-wrap items-center justify-between px-5 py-3">

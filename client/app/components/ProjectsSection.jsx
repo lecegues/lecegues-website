@@ -48,7 +48,7 @@ const ProjectSection = () => {
   );
 
   return (
-    <div>
+    <section className="py-8">
       <h2 className="text-center text-4xl font-bold text-black mt-4 mb-7">
         My Projects
       </h2>
@@ -81,7 +81,7 @@ const ProjectSection = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

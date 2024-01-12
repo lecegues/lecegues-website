@@ -9,14 +9,14 @@ import { TypeAnimation } from 'react-type-animation';
 
 const HeroSection = () => {
     return (
-        <section >
+        <section className='py-8' >
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
                 {/* First 7 columns (out of 12) */}
                 <div className="col-span-7 place-self-center font-mono font-normal">
 
                     {/* Header*/ }
-                    <h1 className="text-[#37444B] mb-2 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
+                    <h1 className="text-[#37444B] mb-2 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
                         Hello, I'm <span className="text-[#4A90E2]">John</span>,
                         <br></br>
                         and I love to
