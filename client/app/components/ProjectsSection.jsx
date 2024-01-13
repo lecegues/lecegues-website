@@ -43,12 +43,12 @@ const ProjectSection = () => {
   };
 
   // simply filter for projects
-  const filteredProjects = projectsData.filter((project) => 
+  const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
   );
 
   return (
-    <section className="py-8">
+    <section className="py-8 pb-8 2xl:pb-56">
       <h2 className="text-center text-4xl font-bold text-black mt-4 mb-7">
         My Projects
       </h2>
