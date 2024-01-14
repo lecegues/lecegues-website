@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="py-8 pb-8 2xl:pb-56">
+    <section className="py-8 pb-8 2xl:pb-56" id="hero">
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}

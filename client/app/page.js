@@ -21,10 +21,10 @@ export default function Home(){
     
       {/* Container for Main Section */}
       <div className="container mt-24 mx-auto px-12 py-4 space-y-12">
-        <HeroSection />
-        <AboutSection />
-        <ProjectSection/>
-        <EmailSection/>
+        <HeroSection id="hero" />
+        <AboutSection id="about"/>
+        <ProjectSection id="projects"/>
+        <EmailSection id="contact"/>
       </div>
       <Footer/>
 

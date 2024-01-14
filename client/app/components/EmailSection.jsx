@@ -6,7 +6,10 @@ import Image from "next/image";
 
 const EmailSection = () => {
   return (
-    <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-6">
+    <section
+      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-6"
+      id="contact"
+    >
       {/* First Column */}
       <div>
         <h5 className="text-xl font-bold text-black">Let's Connect</h5>
