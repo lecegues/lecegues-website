@@ -4,15 +4,15 @@
 
 /* Default Light Mode */
 :root {
-  --foreground-rgb: 0, 0, 0;              /* Black text */
-  --background-start-rgb: 255, 255, 255;  /* White Background */
+  --foreground-rgb: 0, 0, 0; /* Black text */
+  --background-start-rgb: 255, 255, 255; /* White Background */
 }
 
 /* VSCode Browser prefers dark mode for some reason */
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;     /* White Text */
+    --foreground-rgb: 255, 255, 255; /* White Text */
     --background-start-rgb: 0, 0, 0; /* Black Background */
   }
 }
@@ -27,3 +27,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+html {
+  scroll-behavior: smooth;
+}
