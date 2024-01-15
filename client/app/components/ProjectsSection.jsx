@@ -7,30 +7,33 @@ import ProjectTag from "./ProjectTag";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 Description",
-    image: "/images/example.jpg",
+    title: "Personal Portfolio Website",
+    description:
+      "A full-stack responsive portfolio website built using the MERN stack, featuring an interactive UI and compatibility with all devices.",
+    image: "/images/project-1-image.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/lecegues/lecegues-website",
+    previewUrl: "https://lecegues.com/",
   },
   {
     id: 2,
-    title: "React Portfolio Website",
-    description: "Project 2 Description",
-    image: "/images/example.jpg",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "FeelPad",
+    description:
+      "Emotion-based Android journalling app developed in Java following MVVM and Material Design, and Agile Development concepts.",
+    image: "/images/project-2-image.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "https://github.com/lecegues/FeelPad",
+    previewUrl: "https://github.com/lecegues/FeelPad",
   },
   {
     id: 3,
-    title: "React Portfolio Website",
-    description: "Project 3 Description",
-    image: "/images/example.jpg",
+    title: "AutoFolio",
+    description:
+      "AI Driven web app developed for a 48-hour hackathon designed to create professional tech profiles. Led UI Development in a fast-paced, global team setting.",
+    image: "/images/project-3-image.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/apneduniya/autofolio",
+    previewUrl: "https://github.com/apneduniya/autofolio",
   },
 ];
 
