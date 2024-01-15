@@ -7,10 +7,12 @@ import React from "react";
 import "../../styles/LandingPage.css";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
     <section className="py-8 pb-8 2xl:pb-56" id="hero">
+      {/* Animate initial transition */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -48,20 +50,25 @@ const HeroSection = () => {
 
           {/* SubHeader */}
           <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sed
-            incidunt deleniti labore rem enim aspernatur nesciunt dolorum sequi
-            voluptatum. Quae aut sint suscipit magnam molestias aspernatur
-            beatae, soluta culpa.
+            👋 Welcome to my personal website! Fueled by a deep passion for
+            technology, I'm all about diving quickly into new tech challenges
+            and exploring diverse hobbies that spark my curiosity and
+            creativity, enriching my perspective both in and outside the world
+            of coding.
           </p>
 
           {/* Buttons */}
           <div>
-            <button className="px-12 py-3 w-full sm:w-fit rounded-xl mr-4 bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold">
-              Blog
-            </button>
-            <button className="px-10 py-3 w-full sm:w-fit rounded-xl  ml-1 bg-transparent hover:bg-[#d0d0d0] text-black border border-black mt-3 font-semibold">
-              Contact Me
-            </button>
+            <Link href="/">
+              <button className="px-12 py-3 w-full sm:w-fit rounded-xl mr-4 bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold">
+                Blog
+              </button>
+            </Link>
+            <Link href="#contact">
+              <button className="px-10 py-3 w-full sm:w-fit rounded-xl  ml-1 bg-transparent hover:bg-[#d0d0d0] text-black border border-black mt-3 font-semibold">
+                Contact Me
+              </button>
+            </Link>
           </div>
         </div>
 
