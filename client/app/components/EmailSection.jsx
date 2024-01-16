@@ -13,12 +13,7 @@ const EmailSection = () => {
       {/* First Column */}
       <div>
         <h5 className="text-xl font-bold text-black">Let's Connect</h5>
-        <p className="text-gray-500 mb-4 max-w-md">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+        <p className="text-gray-500 mb-4 max-w-md">Here are my socials</p>
         <div className="socials flex flex-row gap-2">
           <Link href="github.com">
             <Image src={GithubIcon} alt="Github Icon" className="dark:invert" />
