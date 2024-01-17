@@ -5,8 +5,8 @@ import Image from "next/image";
 import TabButton from "./TabButton";
 import { easeIn, motion, useInView } from "framer-motion";
 
-// Contains information for every tab (content)
-// @TODO should be connected to database
+// Array that contains information about each tab. Currently hardcoded
+// @TODO should be manageable by CMS (database)
 const TAB_DATA = [
   {
     title: "Skills",
@@ -83,40 +83,47 @@ const TAB_DATA = [
   },
 ];
 
+/**
+ * About Section for the Landing Page with slight animations
+ * Consists of a header, subheader, and 3 different tabs
+ */
 const AboutSection = () => {
-  // Hold information about which tab is open
+  // State hook for managing the active tab
   const [tab, setTab] = useState("skills");
 
-  // Transition Hook
+  // Transition hook for non-blocking UI state updates
   const [isPending, startTransition] = useTransition();
 
-  // Takes ID and starts the transition
-  // Transition updates state without blocking UI
+  // Takes ID and starts transition with smooth transition
   const handleTabChange = (id) => {
     startTransition(() => {
       setTab(id);
     });
   };
 
-  // Animation for underline when seen for first time
+  // Used for initial view animation (animated underline of header and picture)
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true }); // once in view, set to true
 
+  // Animation variant for header underline
   const underline_variants = {
     default: { width: 0 },
     active: { width: "12rem" },
   };
 
+  // Animation variant for fade-in picture
   const picture_variants = {
     default: { opacity: 0, scale: 0 },
     active: { opactiy: 1, scale: 1 },
   };
 
   return (
+    // Section consists of single section in mobile, and two sections above that
     <section className="text-black py-8 pb-8 2xl:pb-56" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 xl:gap-16 items-center py-8 px-4 sm:py-16 xl:px-16">
-        {/* First Column (1/2) */}
+        {/* First Column (1/2) (left) */}
         <div className="flex flex-col h-full mt-4 md:mt-0">
+          {/* Animate picture fade-in during first time seen */}
           <motion.div
             animate={isInView ? "active" : "default"}
             variants={picture_variants}
@@ -131,11 +138,11 @@ const AboutSection = () => {
           ref={ref}
           className="flex flex-col h-full mt-4 md:mt-0 text-left font-sans"
         >
+          {/* Header */}
           <p className="text-[#bcbaba] font-medium mb-2"> A LITTLE BIT </p>
           <h2 className="text-4xl font-mono font-bold text-[#37444B] mb-4">
-            {" "}
             About Me
-            {/* Animation when seen for first time*/}
+            {/* Animation of header underline when seen for first time*/}
             <motion.div
               animate={isInView ? "active" : "default"}
               variants={underline_variants}
@@ -143,6 +150,8 @@ const AboutSection = () => {
               transition={{ duration: 1, delay: 0.4 }}
             />
           </h2>
+
+          {/* Subheader */}
           <p className="text-base lg:text-lg mt-3">
             I am a 3rd year Computer Science and Business student at the
             University of Saskatchewan with a passion for technology. I have
@@ -151,6 +160,8 @@ const AboutSection = () => {
             new technologies to expand my knowledge and skill set while
             collaborating with others on innovative projects.
           </p>
+
+          {/* Container for responsive tab section headers */}
           <div className="flex flex-row mt-8">
             <TabButton
               selectTab={() => handleTabChange("skills")}
@@ -174,6 +185,8 @@ const AboutSection = () => {
               Achievements
             </TabButton>
           </div>
+
+          {/* Container for each tab contents */}
           <div className="mt-8">
             {TAB_DATA.find((t) => t.id === tab).content}
           </div>

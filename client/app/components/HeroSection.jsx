@@ -1,6 +1,3 @@
-/**
- * Hero Section of the Landing Page
- */
 "use client";
 
 import React from "react";
@@ -9,17 +6,22 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+/**
+ * Hero Section for the Landing Page
+ * Consists of a Header, Subheader, Two Buttons, and an Image
+ */
 const HeroSection = () => {
   return (
     <section className="py-8 pb-8 2xl:pb-56" id="hero">
-      {/* Animate initial transition */}
+      {/* Animate initial transition for whole section: fade in */}
+      {/* Single section on small screens, two seconds on big screens */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="grid grid-cols-1 lg:grid-cols-12"
       >
-        {/* First 7 columns (out of 12) */}
+        {/* First 7/12 columns (left side) */}
         <div className="col-span-7 place-self-center font-mono font-normal">
           {/* Header*/}
           <h1 className="text-[#37444B] mb-2 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
@@ -72,7 +74,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Last 5 columns (out of 12) */}
+        {/* Last 5/12 columns (right side) */}
         <div className="col-span-5 place-self-center mt-5 lg:mt-0 md:ml-5">
           {/* Hero Image */}
           <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">

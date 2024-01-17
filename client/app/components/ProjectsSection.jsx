@@ -4,6 +4,8 @@ import { motion, useInView } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 
+// Array containing project data and contents
+// @TODO should be able to be managed inside CMS (database)
 const projectsData = [
   {
     id: 1,
@@ -37,23 +39,29 @@ const projectsData = [
   },
 ];
 
+/**
+ * Project Section for the Landing Page
+ * Consists of filtered tabs with projects as contents inside them
+ */
 const ProjectSection = () => {
-  // track which filter is selected
+  // State hook to check which filter is selected (default All)
   const [tag, setTag] = useState("All");
 
+  // Used for initial view animations (projects)
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true }); // once it comes into view, set to true
 
-  // Updates tag
+  // Function to update selected tag
   const handleTagChange = (newTag) => {
     setTag(newTag);
   };
 
-  // simply filter for projects
+  // Simple way to filter for projects
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
   );
 
+  // Animation variants for project cards
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -61,9 +69,12 @@ const ProjectSection = () => {
 
   return (
     <section className="py-8 pb-8 2xl:pb-56" id="projects">
+      {/* Header */}
       <h2 className="text-center text-4xl font-bold text-black mt-4 mb-7 pt-12">
         My Projects
       </h2>
+
+      {/* Filtered Tabs */}
       <div className="text-black flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
           onClick={handleTagChange}
@@ -81,8 +92,11 @@ const ProjectSection = () => {
           isSelected={tag === "Mobile"}
         />
       </div>
+
+      {/* Represents the list of projects, their contents, and their animations */}
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
         {filteredProjects.map((project, index) => (
+          // animation for the projects is based on position of project in the list
           <motion.li
             key={index}
             variants={cardVariants}
