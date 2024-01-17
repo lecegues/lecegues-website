@@ -1,6 +1,14 @@
 import React from "react";
 
+/**
+ * ProjectTag component represents filtered tabs for projects
+ * @param {string} name - name of the tag/filter
+ * @param {function} onClick - function that happens when the tab is selected (e.g. UI updates/project filtering)
+ * @param {boolean} isSelected - indicates whether or not this tag is "selected"
+ * @returns {JSX.Element} - tag header components to be used to filter out projects
+ */
 const ProjectTag = ({ name, onClick, isSelected }) => {
+  // Determine the button style depending on if the tab is selected or not
   const buttonStyles = isSelected
     ? "text-[#37444B] border-[#D67669]"
     : "text-[#6E7A83] border-[#CEA5A2] hover:border-[#D67669] hover:text-[#37444B]";
