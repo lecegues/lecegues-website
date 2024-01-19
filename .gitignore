@@ -29,8 +29,11 @@ yarn-error.log*
 
 # Local env files
 .env*.local
+<<<<<<< Updated upstream
+=======
 .env
-/backend/credentials.env
+/backend/.env
+>>>>>>> Stashed changes
 
 # Vercel
 .vercel
