@@ -24,10 +24,6 @@ const navLinks = [
     title: "Contact",
     path: "#contact",
   },
-  {
-    title: "Blog",
-    path: "#blog",
-  },
 ];
 
 /**
@@ -39,12 +35,12 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-white pb-3">
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-white px-3">
       <div className=" flex flex-wrap items-center justify-between px-5 py-3">
         {/* Website Logo to lead back to home page */}
         <Link
           href={"/"}
-          className="text-1xl md:text-2xl text-[#37444B] font-sans font-semibold"
+          className="text-2xl md:text-4xl text-[#37444B] font-sans font-semibold"
         >
           Lecegues
         </Link>
@@ -84,12 +80,6 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Login Button */}
-        {/* Should allow owner/admins to login and modify website contents via CMS */}
-        <div className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200">
-          Log in
         </div>
       </div>
 
