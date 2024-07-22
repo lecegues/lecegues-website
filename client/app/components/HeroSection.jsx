@@ -61,14 +61,12 @@ const HeroSection = () => {
 
           {/* Buttons */}
           <div>
-            <Link href="/">
-              <button className="px-12 py-3 w-full sm:w-fit rounded-xl mr-4 bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold">
-                Blog
-              </button>
-            </Link>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-12 py-3 w-full sm:w-fit rounded-xl mr-4 bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold text-center inline-block">
+              Resume
+            </a>
             <Link href="#contact">
               <button className="px-10 py-3 w-full sm:w-fit rounded-xl  ml-1 bg-transparent hover:bg-[#d0d0d0] text-black border border-black mt-3 font-semibold">
-                Contact Me
+                Contact
               </button>
             </Link>
           </div>

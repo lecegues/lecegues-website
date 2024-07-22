@@ -1,6 +1,7 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/react'
+import { ProgressBarProvider } from "./contexts/ProgressBarContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +23,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ProgressBarProvider>
+          {children}
+        </ProgressBarProvider>
+      </body>
       <Analytics />
     </html>
   );
