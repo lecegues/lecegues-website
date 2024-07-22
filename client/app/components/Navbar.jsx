@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon, XmarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
+import ProgressBar from "./ProgressBar";
 
 // Static navigation links for the navbar
 const navLinks = [
@@ -35,8 +36,8 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-white px-3">
-      <div className=" flex flex-wrap items-center justify-between px-5 py-3">
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-white">
+      <div className=" flex flex-wrap items-center justify-between px-5 py-3 mx-3">
         {/* Website Logo to lead back to home page */}
         <Link
           href={"/"}
@@ -82,10 +83,12 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-
+      
+      <ProgressBar/>
       {/* If mobile navBar is open, then show mobile menu */}
       {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
     </nav>
+    
   );
 };
 

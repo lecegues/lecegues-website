@@ -1,11 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import GithubIcon from "../../public/github-icon.svg";
 import LinkedinIcon from "../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import emailjs from '@emailjs/browser'
+import { ProgressBarContext } from "../contexts/ProgressBarContext";
 
 const EmailSection = () => {
+
+  const { setProgressPercentage } = useContext(ProgressBarContext);
+
   // State hook to store data when form submitted
   const [formData, setFormData] = useState({
     email: "",
@@ -18,23 +23,41 @@ const EmailSection = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // function to handle the submission of form
-  const handleSubmit = async (e) => {
+  // handle contact form submission using emailJS
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:8080/send-contact-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+
+    setProgressPercentage(50);
+    
+    const templateParams = {
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    emailjs.send("service_l0ccsrb", "template_2z4y7zt", templateParams, "ac6OlWkBDRpOcQoXl")
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setProgressPercentage(100);
+        alert('Message sent successfully!');
+      })
+      .catch((error) => {
+        console.log('FAILED...', error);
+        alert('Failed to send message. Please try again.');
+        setProgressPercentage(0);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setProgressPercentage(0);
+        }, 500)
+
+        setFormData({
+          email: "",
+          subject: "",
+          message: ""
+        });
+
       });
-      const data = await response.json();
-      console.log(data.message);
-      // handle success
-    } catch (error) {
-      console.error("Error sending message: ", error);
-    }
   };
   return (
     <section
@@ -73,10 +96,10 @@ const EmailSection = () => {
               type="email"
               id="email"
               required
-              className="bg-gray-200 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
               onChange={handleChange}
               value={formData.email}
-              placeholder="jacob@google.com"
+              placeholder="ilovecoding@google.com"
             />
           </div>
 
@@ -91,8 +114,8 @@ const EmailSection = () => {
               type="text"
               id="subject"
               required
-              className="bg-gray-200 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-              placeholder="Just saying hello"
+              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
+              placeholder="What's on your mind?"
               onChange={handleChange}
               value={formData.subject}
             />
@@ -107,7 +130,8 @@ const EmailSection = () => {
             <textarea
               name="message"
               id="message"
-              className="bg-gray-200 placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              required
+              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
               placeholder="Let's talk about..."
               onChange={handleChange}
               value={formData.message}
