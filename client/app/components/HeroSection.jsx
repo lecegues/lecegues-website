@@ -34,6 +34,10 @@ const HeroSection = () => {
                 sequence={[
                   "Code.",
                   1000,
+                  "Play Guitar.",
+                  1000,
+                  "Go Hiking.",
+                  1000,
                   "Fence.",
                   1000,
                   "Learn.",
@@ -41,6 +45,8 @@ const HeroSection = () => {
                   "Ball.",
                   1000,
                   "Work Out.",
+                  1000,
+                  "Box.",
                   1000,
                 ]}
                 wrapper="span"

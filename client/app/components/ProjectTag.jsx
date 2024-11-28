@@ -10,8 +10,8 @@ import React from "react";
 const ProjectTag = ({ name, onClick, isSelected }) => {
   // Determine the button style depending on if the tab is selected or not
   const buttonStyles = isSelected
-    ? "text-[#37444B] border-[#D67669]"
-    : "text-[#6E7A83] border-[#CEA5A2] hover:border-[#D67669] hover:text-[#37444B]";
+    ? "text-[#37444B] border-[#4a90e2]"
+    : "text-[#6E7A83] border-[#8dbbf0] hover:border-[#4a90e2] hover:text-[#37444B]";
   return (
     <button
       className={` ${buttonStyles} rounded-full border-2 px-6 py-3 text-xl cursor-pointer`}
