@@ -5,6 +5,8 @@ import "../../styles/LandingPage.css";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import LinkedinIcon from "../../public/linkedin-icon.svg";
+import Image from "next/image";
 
 /**
  * Hero Section for the Landing Page
@@ -25,55 +27,66 @@ const HeroSection = () => {
         <div className="col-span-7 place-self-center font-mono font-normal">
           {/* Header*/}
           <h1 className="text-[#37444B] mb-2 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
-            Hello, I'm <span className="text-[#4A90E2]">John</span>,<br></br>
-            and I love to
-            <br></br>
+            Hello, I'm <span className="text-[#4A90E2]">John</span>.
+            <br />
+            I help teams{" "}
             {/* Animated Header Typing Animation */}
-            <div className="text-[#4A90E2] mt-1">
+            <span className="text-[#4A90E2] block mt-1">
               <TypeAnimation
                 sequence={[
-                  "Code.",
-                  1000,
-                  "Play Guitar.",
-                  1000,
-                  "Go Hiking.",
-                  1000,
-                  "Fence.",
-                  1000,
-                  "Learn.",
-                  1000,
-                  "Ball.",
-                  1000,
-                  "Work Out.",
-                  1000,
-                  "Box.",
-                  1000,
+                  "ship software", 1200,
+                  "build systems", 1200,
+                  "automate workflows", 1200,
+                  "deliver end-to-end", 1200,
                 ]}
                 wrapper="span"
-                speed={10}
+                speed={20}
                 repeat={Infinity}
+                cursor={true}
               />
-            </div>
+            </span>
           </h1>
 
           {/* SubHeader */}
           <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
-            👋 Welcome to my personal website! Fueled by a deep passion for
-            technology, I'm all about diving quickly into new tech challenges
-            and exploring diverse hobbies that spark my curiosity and
-            creativity, enriching my perspective both in and outside the world
-            of coding.
+            Early-career engineer experienced across the full software lifecycle — from backend services and frontend interfaces
+            to CI/CD workflows and business automation. I’ve shipped production changes, improved processes, and collaborated
+            across teams to support real users.
           </p>
 
           {/* Buttons */}
-          <div>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="px-12 py-3 w-full sm:w-fit rounded-xl mr-4 bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold text-center inline-block">
+          <div className="flex flex-wrap items-center gap-4 mt-4">
+            {/* Resume Button */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-12 py-3 rounded-xl bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold transition"
+            >
               Resume
             </a>
+
+            {/* Contact Button */}
             <Link href="#contact">
-              <button className="px-10 py-3 w-full sm:w-fit rounded-xl  ml-1 bg-transparent hover:bg-[#d0d0d0] text-black border border-black mt-3 font-semibold">
+              <button className="px-10 py-3 rounded-xl bg-transparent hover:bg-[#d0d0d0] text-black border border-black font-semibold transition">
                 Contact
               </button>
+            </Link>
+
+            {/* LinkedIn Icon */}
+            <Link
+              href="https://www.linkedin.com/in/john-lecegues/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border border-black rounded-full hover:bg-gray-100 transition"
+            >
+              <Image
+                src={LinkedinIcon}
+                alt="LinkedIn"
+                width={27}
+                height={27}
+                className="dark:invert"
+              />
             </Link>
           </div>
         </div>
