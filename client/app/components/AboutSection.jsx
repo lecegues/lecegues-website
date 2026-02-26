@@ -129,7 +129,7 @@ const AboutSection = () => {
             variants={picture_variants}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <Image src="/images/about-me.png" width={500} height={500} />
+            <Image src="/images/about-me.png" width={500} height={500} alt="About Me Picture" />
           </motion.div>
         </div>
 

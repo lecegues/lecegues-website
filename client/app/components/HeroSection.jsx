@@ -92,12 +92,18 @@ const HeroSection = () => {
         </div>
 
         {/* Last 5/12 columns (right side) */}
-        <div className="col-span-5 place-self-center mt-5 lg:mt-0 md:ml-5">
-          {/* Hero Image */}
-          <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">
-            <div className="hero-image" />
+          {/* Last 5/12 columns (right side) */}
+          <div className="col-span-5 flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">
+              <Image
+                src="/images/john.jpeg"
+                alt="Portrait of John"
+                fill
+                className="rounded-full object-cover shadow-lg"
+                priority
+              />
+            </div>
           </div>
-        </div>
       </motion.div>
     </section>
   );
