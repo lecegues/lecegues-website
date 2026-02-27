@@ -49,7 +49,7 @@ const HeroSection = () => {
 
           {/* SubHeader */}
           <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
-            Early-career engineer experienced across the full software lifecycle — from backend services and frontend interfaces
+            Early-career engineer experienced across the full software lifecycle, from backend services and frontend interfaces
             to CI/CD workflows and business automation. I’ve shipped production changes, improved processes, and collaborated
             across teams to support real users.
           </p>
