@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useMemo, useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const ExperienceSection = () => {
   const items = useMemo(
@@ -69,14 +69,57 @@ const ExperienceSection = () => {
   const [activeId, setActiveId] = useState(items[0]?.id);
   const active = items.find((x) => x.id === activeId) ?? items[0];
 
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const container = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.12,
+            delayChildren: 0.12,
+        },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y:14 },
+    show: { opacity: 1, y:0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const underline = {
+  hidden: { width: 0 },
+  show: { width: "13rem", transition: { duration: 0.8, ease: "easeOut", delay: 0.15 } },
+  };
+
   return (
-    <section className="py-16 text-[#37444B]" id="experience">
-      <div className="flex flex-col gap-3 mb-10">
-        <h2 className="text-3xl sm:text-4xl font-semibold">Experience</h2>
+      <motion.section
+        ref={sectionRef}
+        className="py-16 text-[#37444B]"
+        id="experience"
+        variants={container}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+     >
+      <motion.div className="flex flex-col gap-3 mb-10" variants={fadeUp}>
+        <div>
+          <h2 className="text-4xl font-mono font-bold text-[#37444B]">
+            Experience
+          </h2>
+
+          {/* Animated underline */}
+          <motion.div
+            className="h-1 rounded bg-[#4A90E2] mt-2"
+            variants={underline}
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+          />
+        </div>
+
         <p className="text-[#6B7280] max-w-2xl">
-          A timeline of work and education — click any milestone to see details.
+          Here are some highlights of my work experience, education, and projects
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         {/* Timeline */}
@@ -90,7 +133,7 @@ const ExperienceSection = () => {
                 const isActive = item.id === activeId;
 
                 return (
-                  <li key={item.id} className="relative">
+                  <motion.li key={item.id} className="relative" variants={fadeUp}>
                         <button
                         type="button"
                         onClick={() => setActiveId(item.id)}
@@ -102,16 +145,7 @@ const ExperienceSection = () => {
                         ].join(" ")}
                         aria-current={isActive ? "true" : "false"}
                         >
-                      {/* dot */}
-                      <span className="absolute left-[6px] top-6 h-3 w-3 rounded-full border border-black/20 bg-white">
-                        <span
-                          className={[
-                            "absolute inset-0 rounded-full transition-opacity",
-                            isActive ? "opacity-100" : "opacity-0",
-                          ].join(" ")}
-                          style={{ boxShadow: "0 0 0 6px rgba(74,144,226,0.10)" }}
-                        />
-                      </span>
+                     
 
                       <div className="flex items-start justify-between gap-4 m-2">
                         <div>
@@ -139,7 +173,7 @@ const ExperienceSection = () => {
                         </div>
                       </div>
                     </button>
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>
@@ -147,7 +181,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Details panel */}
-        <div className="lg:col-span-7">
+        <motion.div className="lg:col-span-7" variants={fadeUp}>
           <div className="rounded-2xl border border-black/10 bg-black/5 p-6 sm:p-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -205,9 +239,9 @@ const ExperienceSection = () => {
           <p className="mt-4 text-sm text-[#9CA3AF]">
             Tip: keep each role to 2–4 bullets focused on outcomes and scope.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
