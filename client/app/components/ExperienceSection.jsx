@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const ExperienceSection = () => {
   const items = useMemo(
     () => [
+        {
+        id: "mindrift-2026",
+        type: "Work",
+        title: "AI Model Evaluation Contributor",
+        org: "Mindrift",
+        location: "Remote",
+        start: "Jan 2026",
+        end: "Current",
+        tags: ["AI", "Testing"],
+        bullets: [
+          "Contributed to multiple AI projects by evaluating LLM-based agents across different domains, generating and assessing multi-turn prompts for response quality, intent alignment, and factual accuracy",
+        ],
+      },
       {
         id: "pcl-2025",
         type: "Work",
@@ -52,15 +65,35 @@ const ExperienceSection = () => {
         ],
       },
       {
+        id: "staples-2023",
+        type: "Work",
+        title: "Technology Sales Representative",
+        org: "Staples Canada",
+        location: "Lloydminster, SK",
+        start: "May 2023",
+        end: "Sep 2023",
+        tags: ["Hardware", "Customer Service", "Sales"],
+        bullets: [
+          "Secured Top 10 seller status district-wide and became the store’s #1 seller within 5 months, generating over $100,000 in monthly sales",
+          "Exceeded monthly sales targets by an average of 200%, consistently ranking in the top tier of performance metrics across the region",
+          "Trained 3 new team members on sales techniques and product knowledge, improving monthly sales performance",
+        ],
+      },
+      {
         id: "usask-edu",
         type: "Education",
-        title: "B.Sc. Computer Science + Certificate in Business",
+        title: "B.Sc in Computer Science + Certificate in Business",
         org: "University of Saskatchewan",
         location: "Saskatoon, SK",
         start: "—",
         end: "May 2027 (Expected)",
-        tags: [],
-        bullets: [],
+        tags: ["Computer Science", "Business"],
+        bullets: [
+          "CMPT 353 – Full Stack Web Programming",
+          "CMPT 370 – Intermediate Software Engineering",
+          "CMPT 371 – Software Management",
+          "CMPT 280 – Data Structures and Algorithms",
+        ],
       },
     ],
     []
@@ -68,6 +101,26 @@ const ExperienceSection = () => {
 
   const [activeId, setActiveId] = useState(items[0]?.id);
   const active = items.find((x) => x.id === activeId) ?? items[0];
+
+  const itemRefs = useRef({});
+  const [dotTop, setDotTop] = useState(24); // fallback
+
+  useEffect(() => {
+    const el = itemRefs.current[activeId];
+    if (!el) return;
+
+    // We want the dot centered on the button’s “top-6” line visually.
+    // We'll compute relative to the timeline container.
+    const timelineEl = itemRefs.current.__timeline;
+    if (!timelineEl) return;
+
+    const elRect = el.getBoundingClientRect();
+    const timelineRect = timelineEl.getBoundingClientRect();
+
+    // 24px approximates the "top-6" alignment inside each button
+    const topWithinTimeline = elRect.top - timelineRect.top + 24;
+    setDotTop(topWithinTimeline);
+  }, [activeId]);
 
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -117,16 +170,28 @@ const ExperienceSection = () => {
         </div>
 
         <p className="text-[#6B7280] max-w-2xl">
-          Here are some highlights of my work experience, education, and projects
+          Here are some highlights of my work experience & education
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         {/* Timeline */}
         <div className="lg:col-span-5">
-          <div className="relative pl-6">
+          <div
+          className="relative pl-6"
+          ref={(node) => {
+            if (node) itemRefs.current.__timeline = node;
+          }}
+          >
             {/* vertical line */}
             <div className="absolute left-[11px] top-0 bottom-0 w-px bg-black/10" />
+
+            <motion.div
+            className="absolute left-[6px] h-3 w-3 rounded-full bg-[#4A90E2]"
+            animate={{ top: dotTop }}
+            transition={{ type: "spring", stiffness: 500, damping: 35 }}
+            style={{ willChange: "top" }}
+            />
 
             <ul className="space-y-5">
               {items.map((item, idx) => {
@@ -135,6 +200,9 @@ const ExperienceSection = () => {
                 return (
                   <motion.li key={item.id} className="relative" variants={fadeUp}>
                         <button
+                        ref={(node) => {
+                            if (node) itemRefs.current[item.id] = node;
+                          }}
                         type="button"
                         onClick={() => setActiveId(item.id)}
                         className={[
@@ -145,8 +213,6 @@ const ExperienceSection = () => {
                         ].join(" ")}
                         aria-current={isActive ? "true" : "false"}
                         >
-                     
-
                       <div className="flex items-start justify-between gap-4 m-2">
                         <div>
                           <div className="flex items-center gap-2">
@@ -228,8 +294,7 @@ const ExperienceSection = () => {
                   </ul>
                 ) : (
                   <p className="mt-6 text-[#6B7280]">
-                    (Optional) We can add relevant coursework, awards, clubs, or
-                    a short “focus areas” list here.
+
                   </p>
                 )}
               </motion.div>
@@ -237,7 +302,7 @@ const ExperienceSection = () => {
           </div>
 
           <p className="mt-4 text-sm text-[#9CA3AF]">
-            Tip: keep each role to 2–4 bullets focused on outcomes and scope.
+            
           </p>
         </motion.div>
       </div>
