@@ -1,0 +1,30 @@
+# Project Memory
+
+## Durable Project Facts
+
+- The active product is a personal portfolio website for John Lecegues.
+- The currently hosted site is frontend-only on Vercel.
+- The active frontend lives in `client/` and uses Next.js App Router, React,
+  Tailwind CSS, Framer Motion, EmailJS, and Vercel Analytics.
+- The homepage is a single-page layout composed from navbar, hero, experience,
+  contact, and footer sections.
+- The contact form currently sends through EmailJS in `ContactSection.jsx`, not
+  through the Express backend.
+- The `backend/` folder contains older or deferred Express/Mongoose/Nodemailer
+  work and should be treated as inactive unless explicitly revived.
+
+## Project Conventions
+
+- Prefer small, direct frontend changes that preserve the existing portfolio style.
+- Use Tailwind utility classes and existing component patterns before adding new
+  styling systems or abstractions.
+- Keep backend, auth, database, environment, lockfile, and infrastructure changes
+  out of scope unless the user explicitly approves them.
+- Update project docs when durable architecture or workflow facts change.
+
+## Gotchas
+
+- Some existing strings contain encoding artifacts.
+- Project-related components exist but are not rendered by the active home page.
+- Root scripts can start both backend and frontend, but the current practical
+  workflow is the frontend in `client/`.
