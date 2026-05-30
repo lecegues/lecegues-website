@@ -1,14 +1,14 @@
 "use client";
+
 import React, { useState, useContext } from "react";
 import GithubIcon from "../../public/github-icon.svg";
 import LinkedinIcon from "../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
-import emailjs from '@emailjs/browser'
+import emailjs from "@emailjs/browser";
 import { ProgressBarContext } from "../contexts/ProgressBarContext";
 
 const EmailSection = () => {
-
   const { setProgressPercentage } = useContext(ProgressBarContext);
 
   // State hook to store data when form submitted
@@ -17,48 +17,58 @@ const EmailSection = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [statusType, setStatusType] = useState("");
 
   // function to set form data values
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // handle contact form submission using emailJS
- const handleSubmit = async (e) => {
+  // handle contact form submission using EmailJS
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
+    setStatusMessage("");
+    setStatusType("");
     setProgressPercentage(50);
-    
+
     const templateParams = {
       email: formData.email,
       subject: formData.subject,
       message: formData.message,
     };
 
-    emailjs.send("service_l0ccsrb", "template_2z4y7zt", templateParams, "ac6OlWkBDRpOcQoXl")
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        setProgressPercentage(100);
-        alert('Message sent successfully!');
-      })
-      .catch((error) => {
-        console.log('FAILED...', error);
-        alert('Failed to send message. Please try again.');
-        setProgressPercentage(0);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setProgressPercentage(0);
-        }, 500)
-
-        setFormData({
-          email: "",
-          subject: "",
-          message: ""
-        });
-
+    try {
+      await emailjs.send(
+        "service_l0ccsrb",
+        "template_2z4y7zt",
+        templateParams,
+        "ac6OlWkBDRpOcQoXl"
+      );
+      setProgressPercentage(100);
+      setStatusType("success");
+      setStatusMessage("Message sent successfully. I'll get back to you soon.");
+      setFormData({
+        email: "",
+        subject: "",
+        message: "",
       });
+    } catch (error) {
+      console.error("Failed to send contact form message:", error);
+      setStatusType("error");
+      setStatusMessage("Message failed to send. Please try again.");
+      setProgressPercentage(0);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setProgressPercentage(0);
+      }, 500);
+    }
   };
+
   return (
     <section
       className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-6"
@@ -69,10 +79,16 @@ const EmailSection = () => {
         <h5 className="text-xl font-bold text-black">Let's Connect</h5>
         <p className="text-gray-500 mb-4 max-w-md">Here are my socials</p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/lecegues">
+          <Link
+            href="https://github.com/lecegues"
+            aria-label="Visit John's GitHub profile"
+          >
             <Image src={GithubIcon} alt="Github Icon" className="dark:invert" />
           </Link>
-          <Link href="https://www.linkedin.com/in/john-lecegues/">
+          <Link
+            href="https://www.linkedin.com/in/john-lecegues/"
+            aria-label="Visit John's LinkedIn profile"
+          >
             <Image
               src={LinkedinIcon}
               alt="Linkedin Icon"
@@ -139,10 +155,23 @@ const EmailSection = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            disabled={isSubmitting}
+            className="bg-[#4A90E2] hover:bg-[#63a4ff] disabled:bg-[#9CA3AF] disabled:cursor-not-allowed text-white font-medium py-2.5 px-5 rounded-lg w-full"
           >
-            Send Message
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
+          {statusMessage ? (
+            <p
+              className={[
+                "mt-4 text-sm",
+                statusType === "success" ? "text-green-700" : "text-red-700",
+              ].join(" ")}
+              role="status"
+              aria-live="polite"
+            >
+              {statusMessage}
+            </p>
+          ) : null}
         </form>
       </div>
     </section>

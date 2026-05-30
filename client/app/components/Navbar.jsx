@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import NavLink from "./NavLink";
-import { Bars3Icon, XMarkIcon, XmarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import ProgressBar from "./ProgressBar";
 
@@ -49,6 +49,9 @@ const Navbar = () => {
           {!navbarOpen ? (
             <button
               onClick={() => setNavbarOpen(true)}
+              aria-label="Open navigation menu"
+              aria-controls="mobile-menu"
+              aria-expanded={navbarOpen}
               className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200"
             >
               <Bars3Icon className="h-5 w-5" />
@@ -57,6 +60,9 @@ const Navbar = () => {
             /* When navbar is open, if clicked then close */
             <button
               onClick={() => setNavbarOpen(false)}
+              aria-label="Close navigation menu"
+              aria-controls="mobile-menu"
+              aria-expanded={navbarOpen}
               className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200"
             >
               <XMarkIcon className="h-5 w-5" />
@@ -79,12 +85,11 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      
-      <ProgressBar/>
+
+      <ProgressBar />
       {/* If mobile navBar is open, then show mobile menu */}
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navbarOpen ? <MenuOverlay links={navLinks} id="mobile-menu" /> : null}
     </nav>
-    
   );
 };
 

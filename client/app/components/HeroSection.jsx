@@ -16,7 +16,7 @@ const HeroSection = () => {
   return (
     <section className="py-8 pb-8 2xl:pb-56" id="hero">
       {/* Animate initial transition for whole section: fade in */}
-      {/* Single section on small screens, two seconds on big screens */}
+      {/* Single section on small screens, two sections on big screens */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -34,10 +34,14 @@ const HeroSection = () => {
             <span className="text-[#4A90E2] block mt-1">
               <TypeAnimation
                 sequence={[
-                  "ship software", 1200,
-                  "build systems", 1200,
-                  "automate workflows", 1200,
-                  "deliver end-to-end", 1200,
+                  "ship software",
+                  1200,
+                  "build systems",
+                  1200,
+                  "automate workflows",
+                  1200,
+                  "deliver end-to-end",
+                  1200,
                 ]}
                 wrapper="span"
                 speed={20}
@@ -49,9 +53,10 @@ const HeroSection = () => {
 
           {/* SubHeader */}
           <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
-            Early-career engineer experienced across the full software lifecycle, from backend services and frontend interfaces
-            to CI/CD workflows and business automation. I’ve shipped production changes, improved processes, and collaborated
-            across teams to support real users.
+            Early-career engineer experienced across the full software lifecycle,
+            from backend services and frontend interfaces to CI/CD workflows and
+            business automation. I've shipped production changes, improved
+            processes, and collaborated across teams to support real users.
           </p>
 
           {/* Buttons */}
@@ -78,6 +83,7 @@ const HeroSection = () => {
               href="https://www.linkedin.com/in/john-lecegues/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit John's LinkedIn profile"
               className="p-2 border border-black rounded-full hover:bg-gray-100 transition"
             >
               <Image
@@ -92,18 +98,17 @@ const HeroSection = () => {
         </div>
 
         {/* Last 5/12 columns (right side) */}
-          {/* Last 5/12 columns (right side) */}
-          <div className="col-span-5 flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">
-              <Image
-                src="/images/john.jpeg"
-                alt="Portrait of John"
-                fill
-                className="rounded-full object-cover shadow-lg"
-                priority
-              />
-            </div>
+        <div className="col-span-5 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">
+            <Image
+              src="/images/john.jpeg"
+              alt="Portrait of John"
+              fill
+              className="rounded-full object-cover shadow-lg"
+              priority
+            />
           </div>
+        </div>
       </motion.div>
     </section>
   );

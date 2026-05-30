@@ -28,3 +28,7 @@
 - Project-related components exist but are not rendered by the active home page.
 - Root scripts can start both backend and frontend, but the current practical
   workflow is the frontend in `client/`.
+- On this Windows environment, PowerShell blocks `npm.ps1`; use `cmd /c npm ...`
+  for npm verification commands.
+- `next build` may need network access because `next/font` fetches Google Fonts
+  during the build.
