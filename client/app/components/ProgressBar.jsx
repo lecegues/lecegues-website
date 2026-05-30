@@ -1,25 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ProgressBarContext } from '../contexts/ProgressBarContext';
+import React, { useContext } from "react";
+import { ProgressBarContext } from "../contexts/ProgressBarContext";
 
 const ProgressBar = () => {
-    const { progressPercentage } = useContext(ProgressBarContext);
-    const [progress, setProgress] = useState(0);
+  const { progressPercentage } = useContext(ProgressBarContext);
 
-    useEffect(() => {
-        setProgress(progressPercentage);
-        if (progress === 0) {
-            
-        }
-    }, [progressPercentage]);
-
-    return (
+  return (
     <div className="w-full bg-white h-1">
       <div
         className="bg-blue-600 h-1 "
-        style={{ width: `${progress}%`, transition: 'width 0.5s ease' }}
+        style={{
+          width: `${progressPercentage}%`,
+          transition: "width 0.5s ease",
+        }}
       ></div>
     </div>
-    );
+  );
 };
 
 export default ProgressBar;

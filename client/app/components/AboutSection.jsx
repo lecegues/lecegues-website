@@ -156,7 +156,7 @@ const AboutSection = () => {
             I am a 3rd year Computer Science and Business student at the
             University of Saskatchewan with a passion for technology. I have
             experience working with a team to develop full-stack web and mobile
-            applications. I'm a committed team player that is eager to look for
+            applications. I&apos;m a committed team player that is eager to look for
             new technologies to expand my knowledge and skill set while
             collaborating with others on innovative projects.
           </p>

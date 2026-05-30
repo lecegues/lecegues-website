@@ -27,7 +27,7 @@ const HeroSection = () => {
         <div className="col-span-7 place-self-center font-mono font-normal">
           {/* Header*/}
           <h1 className="text-[#37444B] mb-2 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
-            Hello, I'm <span className="text-[#4A90E2]">John</span>.
+            Hello, I&apos;m <span className="text-[#4A90E2]">John</span>.
             <br />
             I help teams{" "}
             {/* Animated Header Typing Animation */}
@@ -55,7 +55,7 @@ const HeroSection = () => {
           <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
             Early-career engineer experienced across the full software lifecycle,
             from backend services and frontend interfaces to CI/CD workflows and
-            business automation. I've shipped production changes, improved
+            business automation. I&apos;ve shipped production changes, improved
             processes, and collaborated across teams to support real users.
           </p>
 

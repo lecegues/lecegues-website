@@ -76,7 +76,7 @@ const EmailSection = () => {
     >
       {/* First Column */}
       <div>
-        <h5 className="text-xl font-bold text-black">Let's Connect</h5>
+        <h5 className="text-xl font-bold text-black">Let&apos;s Connect</h5>
         <p className="text-gray-500 mb-4 max-w-md">Here are my socials</p>
         <div className="socials flex flex-row gap-2">
           <Link
