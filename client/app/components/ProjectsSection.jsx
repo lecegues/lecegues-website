@@ -5,13 +5,12 @@ import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 
 // Array containing project data and contents
-// @TODO should be able to be managed inside CMS (database)
 const projectsData = [
   {
     id: 1,
     title: "Personal Portfolio Website",
     description:
-      "A full-stack responsive portfolio website built using the MERN stack, featuring an interactive UI and compatibility with all devices.",
+      "A responsive portfolio website built with Next.js, React, Tailwind CSS, and Vercel deployment.",
     image: "/images/project-1-image.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/lecegues/lecegues-website",
@@ -21,7 +20,7 @@ const projectsData = [
     id: 2,
     title: "FeelPad",
     description:
-      "Emotion-based Android journalling app developed in Java following MVVM and Material Design, and Agile Development concepts.",
+      "Emotion-based Android journaling app built in Java using MVVM, Material Design, and Agile development practices.",
     image: "/images/project-2-image.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/lecegues/FeelPad",
@@ -31,7 +30,7 @@ const projectsData = [
     id: 3,
     title: "AutoFolio",
     description:
-      "AI Driven web app developed for a 48-hour hackathon designed to create professional tech profiles. Led UI Development in a fast-paced, global team setting.",
+      "AI-driven web app created during a 48-hour hackathon to generate professional tech profiles.",
     image: "/images/project-3-image.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/apneduniya/autofolio",
@@ -68,14 +67,23 @@ const ProjectSection = () => {
   };
 
   return (
-    <section className="py-8 pb-8 2xl:pb-56" id="projects">
-      {/* Header */}
-      <h2 className="text-center text-4xl font-bold text-black mt-4 mb-7 pt-12">
-        My Projects
-      </h2>
+    <section className="py-16 text-[#37444B]" id="projects">
+      <div className="flex flex-col gap-3 mb-10">
+        <div>
+          <h2 className="text-4xl font-mono font-bold text-[#37444B]">
+            Projects
+          </h2>
+          <div className="h-1 rounded bg-[#4A90E2] mt-2 w-52" />
+        </div>
+
+        <p className="text-[#6B7280] max-w-2xl">
+          A few selected projects that show my frontend, mobile, and full-stack
+          development work.
+        </p>
+      </div>
 
       {/* Filtered Tabs */}
-      <div className="text-black flex flex-row justify-center items-center gap-2 py-6">
+      <div className="flex flex-row flex-wrap items-center gap-3 pb-8">
         <ProjectTag
           onClick={handleTagChange}
           name="All"
@@ -94,18 +102,17 @@ const ProjectSection = () => {
       </div>
 
       {/* Represents the list of projects, their contents, and their animations */}
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-10">
         {filteredProjects.map((project, index) => (
           // animation for the projects is based on position of project in the list
           <motion.li
-            key={index}
+            key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
             transition={{ duration: 0.3, delay: index * 0.4 }}
           >
             <ProjectCard
-              key={project.id}
               title={project.title}
               description={project.description}
               imgUrl={project.image}

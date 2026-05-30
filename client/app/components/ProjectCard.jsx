@@ -1,6 +1,7 @@
 import React from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * ProjectCard component represents a single "card" of a Project
@@ -14,41 +15,48 @@ import Link from "next/link";
  */
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
   return (
-    <div>
+    <article className="h-full overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm">
       {/* Whole card container */}
-      <div
-        className="h-52 md:h-72 rounded-xl relative group"
-        style={{
-          background: `url(${imgUrl})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="overlay items-center justify-center absolute rounded-xl top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
-          {/* Wrap first button in a link leading to Github URL*/}
-          <Link
-            href={gitUrl}
-            className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white group/link" />
-          </Link>
-
-          {/* Wrap second button in a link leading to preview URL*/}
-          <Link
-            href={previewUrl}
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white group/link" />
-          </Link>
-        </div>
+      <div className="relative h-52 md:h-60">
+        <Image
+          src={imgUrl}
+          alt={`${title} project preview`}
+          fill
+          className="object-cover"
+          sizes="(min-width: 768px) 33vw, 100vw"
+        />
       </div>
 
       {/* Container for title & description of project */}
-      <div className="text-black rounded-b-xl mt-3 px-4">
-        <h5 className="font-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE]">{description}</p>
+      <div className="flex h-[calc(100%-13rem)] flex-col gap-4 p-5 text-[#37444B] md:h-[calc(100%-15rem)]">
+        <div className="flex-1">
+          <h5 className="text-xl font-semibold mb-2">{title}</h5>
+          <p className="text-[#6B7280] leading-relaxed">{description}</p>
+        </div>
+
+        <div className="flex gap-3">
+          <Link
+            href={gitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${title} source code on GitHub`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/15 text-[#37444B] transition hover:border-[#4A90E2] hover:text-[#4A90E2]"
+          >
+            <CodeBracketIcon className="h-6 w-6" />
+          </Link>
+
+          <Link
+            href={previewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${title} project preview`}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/15 text-[#37444B] transition hover:border-[#4A90E2] hover:text-[#4A90E2]"
+          >
+            <EyeIcon className="h-6 w-6" />
+          </Link>
+        </div>
       </div>
-    </div>
+    </article>
   );
 };
 

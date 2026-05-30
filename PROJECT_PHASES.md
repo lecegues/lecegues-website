@@ -26,15 +26,13 @@ Improve the current frontend without changing the core architecture.
 
 ## Phase 3: Projects Section
 
-Status: Partially present, not currently active
+Status: Active
 
-Project-related components and images exist, but `ProjectsSection` is not rendered
-from the active home page.
+Project-related components and images are rendered from the active home page.
 
-Potential work:
+Potential follow-up work:
 
-- Decide whether projects should return to the main page.
-- Validate project card content and imagery.
+- Keep project content and imagery current.
 - Keep the section static unless dynamic content becomes necessary.
 
 ## Phase 4: Backend Decision

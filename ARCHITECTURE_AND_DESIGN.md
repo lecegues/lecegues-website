@@ -26,8 +26,9 @@ the app with `ProgressBarProvider`.
 1. `Navbar`
 2. `HeroSection`
 3. `ExperienceSection`
-4. `ContactSection`
-5. `Footer`
+4. `ProjectsSection`
+5. `ContactSection`
+6. `Footer`
 
 Navigation uses anchor links for page sections. The navbar is fixed, has desktop
 links, and switches to a mobile overlay menu on small screens.
@@ -43,7 +44,7 @@ links, and switches to a mobile overlay menu on small screens.
 - `ProgressBarContext.js` and `ProgressBar.jsx`: Lightweight shared progress state
   displayed below the fixed navbar.
 - `ProjectsSection.jsx`, `ProjectCard.jsx`, `ProjectTag.jsx`, and `TabButton.jsx`:
-  Project display components exist but are not currently rendered on the home page.
+  Static project display, filtering, optimized project images, and project links.
 
 ## Backend Folder
 
