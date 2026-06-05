@@ -10,6 +10,8 @@
   projects, contact, and footer sections.
 - The contact form currently sends through EmailJS in `ContactSection.jsx`, not
   through the Express backend.
+- Social preview metadata currently uses `client/public/images/john.jpeg` until
+  a dedicated Open Graph image is created.
 - The `backend/` folder contains older or deferred Express/Mongoose/Nodemailer
   work and should be treated as inactive unless explicitly revived.
 

@@ -1,38 +1,32 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- BADGES -->
 <p align="center">
   <a href="https://www.linkedin.com/in/john-lecegues/">
     <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" alt="LinkedIn Badge">
   </a>
 </p>
 
-<!-- TITLE -->
 <br />
 <div align="center">
-  
-  <h3 align="center">Portfolio Website</h3>
+  <h1 align="center">John Lecegues Portfolio</h1>
 
   <p align="center">
-    A personal portfolio website showcasing interests, projects, resume, skills, and contact information
+    A personal portfolio website for John Lecegues, deployed at lecegues.com.
     <br />
     <br />
-    <a href="https://lecegues.com/"><strong>View Website »</strong></a>
+    <a href="https://lecegues.com/"><strong>View Website &raquo;</strong></a>
   </p>
 </div>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
+
+This repository contains the source for John Lecegues' personal portfolio site.
+The active app is the `client/` Next.js frontend, which is deployed on Vercel.
+It presents the hero introduction, professional experience, projects, resume
+access, social links, and an EmailJS-powered contact form.
+
+The `backend/` folder exists for older or deferred Express/Mongoose/Nodemailer
+work, but it is not part of the current hosted frontend flow.
 
 ### Built With
 
@@ -43,42 +37,53 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE -->
-## Usage
+## Local Development
 
 ### Prerequisites
 
-Make sure you have the following installed:
 - **Node.js** (Latest LTS recommended)
 - **npm**
 
-### Starting the Server
-1. Navigate to project directory
-```
+### Commands
+
+Run commands from the active frontend app:
+
+```bash
 cd client
 ```
 
-2. Start the server
-```
-npm run start-client
+Start the local development server:
+
+```bash
+cmd /c npm run dev
 ```
 
-3. Open browser and navigate to:
+Run lint checks:
+
+```bash
+cmd /c npm run lint
 ```
+
+Build the frontend:
+
+```bash
+cmd /c npm run build
+```
+
+Open the local site at:
+
+```text
 http://localhost:3000
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

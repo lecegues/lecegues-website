@@ -13,7 +13,8 @@ The active product is the frontend portfolio site in `client/`.
 - Hosted on Vercel.
 - Built with Next.js App Router, React, Tailwind CSS, Framer Motion, and EmailJS.
 - Currently structured as a single-page portfolio.
-- The active page renders hero, experience, contact, and footer sections.
+- The active page renders hero, experience, projects, contact, and footer
+  sections.
 - The contact form sends email through EmailJS directly from the frontend.
 
 ## Repository Shape

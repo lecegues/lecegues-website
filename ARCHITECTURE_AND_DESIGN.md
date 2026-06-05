@@ -18,8 +18,9 @@ but the current hosted product is frontend-only on Vercel.
 
 ## Frontend Flow
 
-`client/app/layout.js` defines global fonts, metadata, Vercel Analytics, and wraps
-the app with `ProgressBarProvider`.
+`client/app/layout.js` defines global fonts, production metadata, Open Graph and
+Twitter card metadata, Vercel Analytics, and wraps the app with
+`ProgressBarProvider`.
 
 `client/app/page.js` renders the one-page portfolio:
 
