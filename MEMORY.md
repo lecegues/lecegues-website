@@ -20,6 +20,8 @@
 - Prefer small, direct frontend changes that preserve the existing portfolio style.
 - Use Tailwind utility classes and existing component patterns before adding new
   styling systems or abstractions.
+- Keep social symbols dark because the portfolio uses a white background
+  regardless of user/system theme.
 - Keep backend, auth, database, environment, lockfile, and infrastructure changes
   out of scope unless the user explicitly approves them.
 - Update project docs when durable architecture or workflow facts change.

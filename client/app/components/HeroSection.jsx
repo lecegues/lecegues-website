@@ -91,7 +91,6 @@ const HeroSection = () => {
                 alt="LinkedIn"
                 width={27}
                 height={27}
-                className="dark:invert"
               />
             </Link>
           </div>

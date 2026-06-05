@@ -83,17 +83,13 @@ const EmailSection = () => {
             href="https://github.com/lecegues"
             aria-label="Visit John's GitHub profile"
           >
-            <Image src={GithubIcon} alt="Github Icon" className="dark:invert" />
+            <Image src={GithubIcon} alt="Github Icon" />
           </Link>
           <Link
             href="https://www.linkedin.com/in/john-lecegues/"
             aria-label="Visit John's LinkedIn profile"
           >
-            <Image
-              src={LinkedinIcon}
-              alt="Linkedin Icon"
-              className="dark:invert"
-            />
+            <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
       </div>
