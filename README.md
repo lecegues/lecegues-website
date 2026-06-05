@@ -22,8 +22,8 @@
 
 This repository contains the source for John Lecegues' personal portfolio site.
 The active app is the `client/` Next.js frontend, which is deployed on Vercel.
-It presents the hero introduction, professional experience, projects, resume
-access, social links, and an EmailJS-powered contact form.
+It presents the hero introduction, professional experience, resume access,
+social links, and an EmailJS-powered contact form.
 
 The `backend/` folder exists for older or deferred Express/Mongoose/Nodemailer
 work, but it is not part of the current hosted frontend flow.

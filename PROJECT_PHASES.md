@@ -26,12 +26,15 @@ Improve the current frontend without changing the core architecture.
 
 ## Phase 3: Projects Section
 
-Status: Active
+Status: Deferred
 
-Project-related components and images are rendered from the active home page.
+Project-related components and images remain in the codebase, but the section is
+temporarily hidden from the active home page because most current projects are
+internal/company-owned and not suitable to show publicly yet.
 
 Potential follow-up work:
 
+- Re-enable the section when there are enough public projects to show.
 - Keep project content and imagery current.
 - Keep the section static unless dynamic content becomes necessary.
 

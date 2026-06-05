@@ -7,9 +7,11 @@
 - The active frontend lives in `client/` and uses Next.js App Router, React,
   Tailwind CSS, Framer Motion, EmailJS, and Vercel Analytics.
 - The homepage is a single-page layout composed from navbar, hero, experience,
-  projects, contact, and footer sections.
+  contact, and footer sections.
 - The contact form currently sends through EmailJS in `ContactSection.jsx`, not
   through the Express backend.
+- Project components still exist, but the Projects section is temporarily hidden
+  because most current project work is internal/company-owned.
 - Social preview metadata currently uses `client/public/images/john.jpeg` until
   a dedicated Open Graph image is created.
 - The `backend/` folder contains older or deferred Express/Mongoose/Nodemailer
@@ -29,8 +31,8 @@
 ## Gotchas
 
 - Some existing strings contain encoding artifacts.
-- Project-related components are rendered by the active home page and should stay
-  static unless dynamic content becomes necessary.
+- Project-related components should stay available for re-enablement, but should
+  remain hidden until there are enough public projects to show.
 - Root scripts can start both backend and frontend, but the current practical
   workflow is the frontend in `client/`.
 - On this Windows environment, PowerShell blocks `npm.ps1`; use `cmd /c npm ...`

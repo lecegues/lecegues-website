@@ -27,9 +27,8 @@ Twitter card metadata, Vercel Analytics, and wraps the app with
 1. `Navbar`
 2. `HeroSection`
 3. `ExperienceSection`
-4. `ProjectsSection`
-5. `ContactSection`
-6. `Footer`
+4. `ContactSection`
+5. `Footer`
 
 Navigation uses anchor links for page sections. The navbar is fixed, has desktop
 links, and switches to a mobile overlay menu on small screens.
@@ -46,6 +45,7 @@ links, and switches to a mobile overlay menu on small screens.
   displayed below the fixed navbar.
 - `ProjectsSection.jsx`, `ProjectCard.jsx`, `ProjectTag.jsx`, and `TabButton.jsx`:
   Static project display, filtering, optimized project images, and project links.
+  These components are currently retained but not rendered in the active UI.
 
 ## Backend Folder
 
