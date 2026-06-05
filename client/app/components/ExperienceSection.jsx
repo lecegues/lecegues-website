@@ -7,6 +7,32 @@ const ExperienceSection = () => {
   const items = useMemo(
     () => [
       {
+        id: "cpp-2027",
+        type: "Work",
+        title: "Intern, Technology & Data (Incoming)",
+        org: "CPP Investments",
+        location: "Toronto, ON",
+        start: "Jan 2027",
+        end: "Apr 2027",
+        tags: [],
+        bullets: ["Incoming Winter 2027 internship in Technology & Data."],
+      },
+      {
+        id: "phi-2026",
+        type: "Work",
+        title: "Software Developer Intern",
+        org: "Peace Hills Insurance",
+        location: "Edmonton, AB",
+        start: "May 2026",
+        end: "Aug 2026",
+        tags: ["AI RAG", "AWS", "Python", "Java"],
+        bullets: [
+          "Implementing regulatory Guidewire updates in Java, ensuring system compliance for 1,000+ brokers",
+          "Building a RAG-based AI assistant on AWS Bedrock for scalable enterprise search across Sharepoint and Teams",
+          "Developing an internal AI coding assistant using hosted LLMs and enterprise code retrieval for developers",
+        ],
+      },
+      {
         id: "mindrift-2026",
         type: "Work",
         title: "AI Model Evaluation Contributor",
