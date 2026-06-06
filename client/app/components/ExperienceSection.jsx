@@ -136,21 +136,28 @@ const ExperienceSection = () => {
   const itemRefs = useRef({});
   const [dotTop, setDotTop] = useState(24); // fallback
 
+  /*
+   * The active marker tracks the selected row rather than assuming fixed row
+   * heights, since titles and dates wrap differently across viewport sizes.
+   */
   useEffect(() => {
-    const el = itemRefs.current[activeId];
-    if (!el) return;
+    const updateDotPosition = () => {
+      const el = itemRefs.current[activeId];
+      if (!el) return;
 
-    // We want the dot centered on the button's "top-6" line visually.
-    // We'll compute relative to the timeline container.
-    const timelineEl = itemRefs.current.__timeline;
-    if (!timelineEl) return;
+      const timelineEl = itemRefs.current.__timeline;
+      if (!timelineEl) return;
 
-    const elRect = el.getBoundingClientRect();
-    const timelineRect = timelineEl.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const timelineRect = timelineEl.getBoundingClientRect();
 
-    // 24px approximates the "top-6" alignment inside each button
-    const topWithinTimeline = elRect.top - timelineRect.top + 24;
-    setDotTop(topWithinTimeline);
+      const topWithinTimeline = elRect.top - timelineRect.top + 24;
+      setDotTop(topWithinTimeline);
+    };
+
+    updateDotPosition();
+    window.addEventListener("resize", updateDotPosition);
+    return () => window.removeEventListener("resize", updateDotPosition);
   }, [activeId]);
 
   const sectionRef = useRef(null);

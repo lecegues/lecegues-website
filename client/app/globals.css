@@ -321,6 +321,10 @@ body {
     4px 5px 0 var(--ink);
 }
 
+.progress-bar-fill {
+  transition: width 0.5s ease;
+}
+
 .sketch-stroke,
 .sketch-arrow {
   --sketch-rotation: -4deg;
@@ -381,6 +385,23 @@ body {
   }
 }
 
+@media (max-width: 639px) {
+  .sketch-annotation {
+    transform: none;
+  }
+
+  .pinned-photo,
+  .rough-panel {
+    box-shadow:
+      2px 3px 0 var(--paper-deep),
+      3px 4px 0 var(--ink);
+  }
+
+  .hero-note {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -398,7 +419,15 @@ body {
   .experience-entry,
   .experience-entry::after,
   .contact-social-link,
-  .contact-field {
+  .contact-field,
+  .progress-bar-fill {
     transition: none;
+  }
+
+  .sketch-button:hover,
+  .sketch-icon-button:hover,
+  .experience-entry:hover,
+  .contact-social-link:hover {
+    transform: none;
   }
 }

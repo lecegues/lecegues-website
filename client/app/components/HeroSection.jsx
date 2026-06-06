@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import LinkedinIcon from "../../public/linkedin-icon.svg";
 import Image from "next/image";
@@ -12,12 +12,14 @@ import Image from "next/image";
  * Consists of a Header, Subheader, Two Buttons, and an Image
  */
 const HeroSection = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="pb-10 pt-8 md:pb-16 md:pt-12 lg:pb-24" id="hero">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, ease: "easeOut" }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: "easeOut" }}
         className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8"
       >
         <div className="lg:col-span-7 lg:pr-6">
@@ -31,22 +33,26 @@ const HeroSection = () => {
             <br />
             I help teams{" "}
             <span className="mt-2 block min-h-[1.2em] text-[var(--marker)]">
-              <TypeAnimation
-                sequence={[
-                  "ship software",
-                  1200,
-                  "build systems",
-                  1200,
-                  "automate workflows",
-                  1200,
-                  "deliver end-to-end",
-                  1200,
-                ]}
-                wrapper="span"
-                speed={20}
-                repeat={Infinity}
-                cursor={true}
-              />
+              {shouldReduceMotion ? (
+                "ship software"
+              ) : (
+                <TypeAnimation
+                  sequence={[
+                    "ship software",
+                    1200,
+                    "build systems",
+                    1200,
+                    "automate workflows",
+                    1200,
+                    "deliver end-to-end",
+                    1200,
+                  ]}
+                  wrapper="span"
+                  speed={20}
+                  repeat={Infinity}
+                  cursor={true}
+                />
+              )}
             </span>
           </h1>
 
@@ -89,7 +95,7 @@ const HeroSection = () => {
         </div>
 
         <div className="mx-auto flex w-full max-w-md flex-col items-center lg:col-span-5 lg:items-end">
-          <div className="pinned-photo w-[min(82vw,22rem)] rotate-[2deg] sm:w-[22rem] lg:w-full lg:max-w-[25rem]">
+          <div className="pinned-photo w-[min(82vw,22rem)] sm:w-[22rem] sm:rotate-[2deg] lg:w-full lg:max-w-[25rem]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[var(--paper-deep)]">
               <Image
                 src="/images/john.jpeg"
@@ -106,12 +112,12 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-8 grid w-full max-w-sm gap-4 sm:grid-cols-2 lg:mr-2 lg:max-w-md">
-            <div className="hero-note -rotate-2">
+            <div className="hero-note sm:-rotate-2">
               <span className="text-[var(--marker)]">currently:</span>
               <br />
               Peace Hills Insurance
             </div>
-            <div className="hero-note rotate-1">
+            <div className="hero-note sm:rotate-1">
               <span className="text-[var(--marker)]">next:</span>
               <br />
               CPP Investments / Winter 2027

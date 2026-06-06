@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
@@ -30,6 +30,19 @@ const navLinks = [
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  useEffect(() => {
+    if (!navbarOpen) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setNavbarOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [navbarOpen]);
+
   return (
     <nav className="fixed left-0 right-0 top-0 z-10 px-3 pt-2 sm:px-5">
       <div className="mx-auto max-w-[90rem] border-b-2 border-[var(--ink)] bg-[var(--paper)]/95 shadow-[0_4px_0_var(--paper-deep)] backdrop-blur-sm">
@@ -42,29 +55,22 @@ const Navbar = () => {
           </Link>
 
           <div className="block md:hidden">
-            {!navbarOpen ? (
-              <button
-                type="button"
-                onClick={() => setNavbarOpen(true)}
-                aria-label="Open navigation menu"
-                aria-controls="mobile-menu"
-                aria-expanded={navbarOpen}
-                className="sketch-icon-button"
-              >
-                <Bars3Icon className="h-5 w-5" />
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setNavbarOpen(false)}
-                aria-label="Close navigation menu"
-                aria-controls="mobile-menu"
-                aria-expanded={navbarOpen}
-                className="sketch-icon-button"
-              >
+            <button
+              type="button"
+              onClick={() => setNavbarOpen((isOpen) => !isOpen)}
+              aria-label={
+                navbarOpen ? "Close navigation menu" : "Open navigation menu"
+              }
+              aria-controls="mobile-menu"
+              aria-expanded={navbarOpen}
+              className="sketch-icon-button"
+            >
+              {navbarOpen ? (
                 <XMarkIcon className="h-5 w-5" />
-              </button>
-            )}
+              ) : (
+                <Bars3Icon className="h-5 w-5" />
+              )}
+            </button>
           </div>
 
           <div className="hidden font-mono md:block md:w-auto" id="navbar">
@@ -78,7 +84,13 @@ const Navbar = () => {
           </div>
         </div>
 
-        {navbarOpen ? <MenuOverlay links={navLinks} id="mobile-menu" /> : null}
+        {navbarOpen ? (
+          <MenuOverlay
+            links={navLinks}
+            id="mobile-menu"
+            onSelect={() => setNavbarOpen(false)}
+          />
+        ) : null}
         <ProgressBar />
       </div>
     </nav>
