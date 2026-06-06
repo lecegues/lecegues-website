@@ -210,26 +210,27 @@ body {
     transform 160ms ease;
 }
 
-.experience-entry::after {
+.experience-entry-border {
   position: absolute;
-  z-index: -1;
-  right: 0.25rem;
-  bottom: 0.4rem;
-  left: 0.25rem;
-  height: 42%;
-  content: "";
-  background: var(--marker-soft);
-  border-radius: 45% 55% 48% 52%;
-  opacity: 0;
-  transform: rotate(-0.5deg) scaleX(0.7);
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.experience-entry-active::after {
-  opacity: 1;
-  transform: rotate(-0.5deg) scaleX(1);
+.experience-entry-border path {
+  fill: none;
+  stroke: var(--marker);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: 100;
+  vector-effect: non-scaling-stroke;
+}
+
+.experience-entry-active .experience-entry-border path {
+  animation: experience-border-draw 700ms ease-out forwards;
 }
 
 .experience-entry:hover {
@@ -385,6 +386,12 @@ body {
   }
 }
 
+@keyframes experience-border-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (max-width: 639px) {
   .sketch-annotation {
     transform: none;
@@ -417,11 +424,15 @@ body {
   .sketch-button,
   .sketch-icon-button,
   .experience-entry,
-  .experience-entry::after,
   .contact-social-link,
   .contact-field,
   .progress-bar-fill {
     transition: none;
+  }
+
+  .experience-entry-active .experience-entry-border path {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 
   .sketch-button:hover,

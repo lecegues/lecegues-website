@@ -255,6 +255,20 @@ const ExperienceSection = () => {
                       ].join(" ")}
                       aria-current={isActive ? "true" : "false"}
                     >
+                      {isActive && (
+                        <svg
+                          aria-hidden="true"
+                          className="experience-entry-border"
+                          focusable="false"
+                          preserveAspectRatio="none"
+                          viewBox="0 0 100 100"
+                        >
+                          <path
+                            d="M 1 50 L 1 1 L 99 2 L 98 99 L 1 98 Z"
+                            pathLength="100"
+                          />
+                        </svg>
+                      )}
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">

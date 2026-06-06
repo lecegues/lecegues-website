@@ -6,7 +6,8 @@ Use this file to preserve context when work is paused, handed off, or moved to a
 Implement and integrate the modern sketchbook redesign into `development`.
 
 ## Current status
-Complete. The modern sketchbook redesign is merged into `development`.
+Complete. The modern sketchbook redesign is merged into `development`, and the
+active Experience entry now uses an animated blue marker border.
 
 ## Completed work
 - Committed checkpoint 1 as `b16b4dc` (`Establish sketchbook visual system`).
@@ -20,6 +21,13 @@ Complete. The modern sketchbook redesign is merged into `development`.
 - Confirmed EmailJS configuration, analytics, metadata, dependencies, lockfiles,
   backend, and hidden Projects behavior remain unchanged.
 - Merged the completed redesign into `development`.
+- Replaced the active Experience entry's translucent highlight with a decorative
+  blue SVG border that draws clockwise from the left-edge midpoint and remains
+  visible while selected.
+- Made the active Experience border display immediately when reduced motion is
+  requested.
+- Corrected the border rendering so inactive entries have no blue stroke and the
+  selected entry draws the complete perimeter.
 
 ## Files touched
 - `PROJECT_CONTEXT.md`
@@ -27,6 +35,8 @@ Complete. The modern sketchbook redesign is merged into `development`.
 - `ARCHITECTURE_AND_DESIGN.md`
 - `MEMORY.md`
 - `TASK_HANDOFF.md`
+- `client/app/components/ExperienceSection.jsx`
+- `client/app/globals.css`
 
 ## Tests run
 - `cmd /c npm run lint` from `client/`: passed.
