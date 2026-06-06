@@ -3,12 +3,10 @@
 Use this file to preserve context when work is paused, handed off, or moved to a new agent session.
 
 ## Goal
-Implement the modern sketchbook redesign on `feature/sketchbook-redesign` in
-reviewable checkpoints.
+Implement and integrate the modern sketchbook redesign into `development`.
 
 ## Current status
-Complete and merge-ready. All redesign checkpoints are approved, verified, and
-committed on `feature/sketchbook-redesign`.
+Complete. The modern sketchbook redesign is merged into `development`.
 
 ## Completed work
 - Committed checkpoint 1 as `b16b4dc` (`Establish sketchbook visual system`).
@@ -16,10 +14,12 @@ committed on `feature/sketchbook-redesign`.
 - Committed checkpoint 3 as `5150195` (`Redesign experience as work notebook`).
 - Committed checkpoint 4 as `33dd0ad` (`Redesign contact and footer`).
 - Committed checkpoint 5 as `8521113` (`Polish sketchbook redesign`).
+- Committed checkpoint 6 as `8f43190` (`Document sketchbook redesign`).
 - Updated durable project documentation for the sketchbook design direction.
 - Audited the complete branch diff against `development`.
 - Confirmed EmailJS configuration, analytics, metadata, dependencies, lockfiles,
   backend, and hidden Projects behavior remain unchanged.
+- Merged the completed redesign into `development`.
 
 ## Files touched
 - `PROJECT_CONTEXT.md`
@@ -35,7 +35,7 @@ committed on `feature/sketchbook-redesign`.
 - `git diff --check`: passed with Git line-ending warnings only.
 
 ## Next checkpoint
-Merge `feature/sketchbook-redesign` into `development` when ready.
+No remaining work for the sketchbook redesign.
 
 ## Risks / unknowns
 - No automated browser screenshot or end-to-end interaction tooling is configured

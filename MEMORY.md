@@ -8,6 +8,7 @@
   Tailwind CSS, Framer Motion, EmailJS, and Vercel Analytics.
 - The homepage is a single-page layout composed from navbar, hero, experience,
   contact, and footer sections.
+- The modern sketchbook redesign is integrated into `development`.
 - The contact form currently sends through EmailJS in `ContactSection.jsx`, not
   through the Express backend.
 - Project components still exist, but the Projects section is temporarily hidden
