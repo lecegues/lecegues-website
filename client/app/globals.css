@@ -154,6 +154,13 @@ body {
   background: var(--marker-soft);
 }
 
+.sketch-button:disabled,
+.sketch-button:disabled:hover {
+  background: var(--paper-deep);
+  box-shadow: 1px 1px 0 var(--ink-muted);
+  transform: none;
+}
+
 .sketch-button:focus-visible,
 .sketch-icon-button:focus-visible {
   outline: 2px solid var(--marker);
@@ -234,6 +241,75 @@ body {
   background: rgba(255, 255, 255, 0.22);
   border: 1px solid rgba(41, 45, 47, 0.55);
   border-radius: 0.25rem 0.4rem 0.3rem 0.45rem;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.8rem;
+  color: var(--ink);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.22);
+  border-bottom: 1.5px solid var(--ink);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.contact-social-link:hover {
+  background: var(--marker-soft);
+  transform: rotate(-1deg);
+}
+
+.contact-social-link:focus-visible {
+  outline: 2px solid var(--marker);
+  outline-offset: 4px;
+}
+
+.contact-field {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0.25rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid rgba(41, 45, 47, 0.65);
+  border-radius: 0;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.contact-field::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.7;
+}
+
+.contact-field:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-field:focus {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: var(--marker);
+  outline: none;
+  box-shadow: 0 2px 0 var(--marker);
+}
+
+.contact-status {
+  padding: 0.65rem 0.8rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-left: 3px solid currentColor;
+}
+
+.contact-status-success {
+  color: #276442;
+}
+
+.contact-status-error {
+  color: #9c3535;
 }
 
 .rough-panel {
@@ -320,7 +396,9 @@ body {
   .sketch-button,
   .sketch-icon-button,
   .experience-entry,
-  .experience-entry::after {
+  .experience-entry::after,
+  .contact-social-link,
+  .contact-field {
     transition: none;
   }
 }

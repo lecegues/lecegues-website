@@ -71,36 +71,61 @@ const EmailSection = () => {
 
   return (
     <section
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-6"
+      className="grid gap-12 py-16 md:grid-cols-12 md:gap-10 md:py-24 lg:gap-16"
       id="contact"
     >
-      {/* First Column */}
-      <div>
-        <h5 className="text-xl font-bold text-black">Let&apos;s Connect</h5>
-        <p className="text-gray-500 mb-4 max-w-md">Here are my socials</p>
-        <div className="socials flex flex-row gap-2">
+      <div className="md:col-span-5">
+        <p className="sketch-annotation text-[var(--marker)]">
+          leave a note in the margin
+        </p>
+        <h2 className="mt-3 font-mono text-4xl font-bold text-[var(--ink)] sm:text-5xl">
+          <span className="sketch-underline">Let&apos;s Connect</span>
+        </h2>
+        <p className="mt-6 max-w-md text-lg leading-relaxed text-[var(--ink-muted)]">
+          Have a role, project, or idea worth discussing? Send a note and
+          I&apos;ll get back to you soon.
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link
             href="https://github.com/lecegues"
             aria-label="Visit John's GitHub profile"
+            className="contact-social-link"
           >
-            <Image src={GithubIcon} alt="Github Icon" />
+            <Image src={GithubIcon} alt="" width={25} height={25} />
+            <span>GitHub</span>
           </Link>
           <Link
             href="https://www.linkedin.com/in/john-lecegues/"
             aria-label="Visit John's LinkedIn profile"
+            className="contact-social-link"
           >
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            <Image src={LinkedinIcon} alt="" width={25} height={25} />
+            <span>LinkedIn</span>
           </Link>
+        </div>
+
+        <div className="mt-10 hidden md:block">
+          <span className="sketch-arrow" aria-hidden="true" />
+          <p className="sketch-annotation mt-4 max-w-xs">
+            the form sends straight to my inbox
+          </p>
         </div>
       </div>
 
-      {/* Second Column */}
-      <div>
-        <form className="flex flex-col" onSubmit={handleSubmit}>
+      <div className="md:col-span-7">
+        <form
+          className="rough-panel flex flex-col p-5 sm:p-8"
+          onSubmit={handleSubmit}
+        >
+          <p className="sketch-annotation mb-6 text-[var(--marker)]">
+            new message
+          </p>
+
           <div className="mb-6">
             <label
               htmlFor="email"
-              className="text-black block text-sm font-medium mb-2"
+              className="mb-2 block text-sm font-bold text-[var(--ink)]"
             >
               Your Email
             </label>
@@ -108,7 +133,7 @@ const EmailSection = () => {
               type="email"
               id="email"
               required
-              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
+              className="contact-field"
               onChange={handleChange}
               value={formData.email}
               placeholder="ilovecoding@google.com"
@@ -118,7 +143,7 @@ const EmailSection = () => {
           <div className="mb-6">
             <label
               htmlFor="subject"
-              className="text-black block text-sm font-medium mb-2"
+              className="mb-2 block text-sm font-bold text-[var(--ink)]"
             >
               Subject
             </label>
@@ -126,7 +151,7 @@ const EmailSection = () => {
               type="text"
               id="subject"
               required
-              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
+              className="contact-field"
               placeholder="What's on your mind?"
               onChange={handleChange}
               value={formData.subject}
@@ -135,7 +160,7 @@ const EmailSection = () => {
           <div className="mb-6">
             <label
               htmlFor="message"
-              className="text-black block text-sm font-medium mb-2"
+              className="mb-2 block text-sm font-bold text-[var(--ink)]"
             >
               Message
             </label>
@@ -143,7 +168,8 @@ const EmailSection = () => {
               name="message"
               id="message"
               required
-              className="bg-gray-200 placeholder-[#9CA2A9] text-black text-sm rounded-lg block w-full p-2.5"
+              rows={6}
+              className="contact-field resize-y"
               placeholder="Let's talk about..."
               onChange={handleChange}
               value={formData.message}
@@ -152,15 +178,17 @@ const EmailSection = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-[#4A90E2] hover:bg-[#63a4ff] disabled:bg-[#9CA3AF] disabled:cursor-not-allowed text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            className="sketch-button sketch-button-primary w-full disabled:cursor-not-allowed disabled:opacity-55"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
           {statusMessage ? (
             <p
               className={[
-                "mt-4 text-sm",
-                statusType === "success" ? "text-green-700" : "text-red-700",
+                "contact-status mt-5 text-sm font-semibold",
+                statusType === "success"
+                  ? "contact-status-success"
+                  : "contact-status-error",
               ].join(" ")}
               role="status"
               aria-live="polite"

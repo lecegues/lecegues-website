@@ -7,23 +7,24 @@ Implement the modern sketchbook redesign on `feature/sketchbook-redesign` in
 reviewable checkpoints.
 
 ## Current status
-Checkpoints 1 and 2 are approved and committed. Checkpoint 3, Experience Notebook
-Redesign, is implemented and awaiting visual approval before its focused commit.
+Checkpoints 1 through 3 are approved and committed. Checkpoint 4, Contact and
+Footer Redesign, is implemented and awaiting visual approval before its focused
+commit.
 
 ## Completed work
 - Committed checkpoint 1 as `b16b4dc` (`Establish sketchbook visual system`).
 - Committed checkpoint 2 as `c1c223e` (`Redesign navbar and hero`).
-- Restyled Experience as a work-notebook spread with an ink-rule timeline and
-  rough notebook details panel.
-- Preserved all experience data, timeline ordering, default selection, active
-  selection behavior, and detail transitions.
-- Added blue marker active states, clearer title/date hierarchy, outlined tags,
-  and ink-style bullet marks.
-- Improved mobile title, metadata, date, tag, and panel layout.
-- Added visible timeline focus states and reduced-motion handling.
+- Committed checkpoint 3 as `5150195` (`Redesign experience as work notebook`).
+- Redesigned Contact as a responsive notebook spread with a rough-panel form.
+- Preserved EmailJS configuration, payload, controlled fields, progress updates,
+  loading state, reset behavior, and status messages.
+- Restyled social links, form controls, submit states, focus states, and status
+  messages.
+- Replaced the generic footer with an ink rule and handwritten sign-off.
 
 ## Files touched
-- `client/app/components/ExperienceSection.jsx`
+- `client/app/components/ContactSection.jsx`
+- `client/app/components/Footer.jsx`
 - `client/app/globals.css`
 - `TASK_HANDOFF.md`
 
@@ -34,8 +35,8 @@ Redesign, is implemented and awaiting visual approval before its focused commit.
 - `git diff --check`: passed with Git line-ending warnings only.
 
 ## Next checkpoint
-After checkpoint 3 approval and commit, redesign Contact and Footer while
-preserving EmailJS submission and progress behavior.
+After checkpoint 4 approval and commit, complete responsive, accessibility, and
+visual-cohesion polish across the full visible page.
 
 ## Risks / unknowns
 - Visual approval is pending; no automated browser screenshot tooling is
