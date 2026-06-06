@@ -2,31 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Default Light Mode */
 :root {
-  --foreground-rgb: 0, 0, 0; /* Black text */
-  --background-start-rgb: 255, 255, 255; /* White Background */
-}
-
-/* VSCode Browser prefers dark mode for some reason */
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255; /* White Text */
-    --background-start-rgb: 0, 0, 0; /* Black Background */
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  --paper: #f7f3e9;
+  --paper-deep: #eee7d8;
+  --ink: #292d2f;
+  --ink-muted: #687074;
+  --marker: #4a90e2;
+  --marker-soft: rgba(74, 144, 226, 0.22);
+  --paper-shadow: rgba(41, 45, 47, 0.12);
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(255, 255, 255, 0.7), transparent 24rem),
+    radial-gradient(circle at 82% 38%, rgba(238, 231, 216, 0.6), transparent 28rem);
+  font-family: var(--font-inter), sans-serif;
+}
+
+::selection {
+  color: var(--ink);
+  background: var(--marker-soft);
+}
+
+.sketch-highlight {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+}
+
+.sketch-highlight::after {
+  position: absolute;
+  z-index: -1;
+  right: -0.12em;
+  bottom: 0.08em;
+  left: -0.08em;
+  height: 0.38em;
+  content: "";
+  background: var(--marker-soft);
+  border-radius: 45% 55% 42% 58%;
+  transform: rotate(-1.2deg);
+}
+
+.sketch-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-underline::after {
+  --sketch-rotation: -1deg;
+  position: absolute;
+  right: -0.12em;
+  bottom: -0.14em;
+  left: -0.08em;
+  height: 0.18em;
+  content: "";
+  background: var(--marker);
+  border-radius: 60% 40% 55% 45%;
+  transform: rotate(var(--sketch-rotation)) scaleX(1);
+  transform-origin: left center;
+  animation: sketch-draw 700ms ease-out both;
+}
+
+.sketch-annotation {
+  color: var(--ink-muted);
+  font-family: var(--font-caveat), cursive;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  transform: rotate(-1.5deg);
+}
+
+.rough-panel {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1.5px solid var(--ink);
+  border-radius: 0.35rem 0.55rem 0.4rem 0.6rem;
+  box-shadow:
+    3px 4px 0 var(--paper-deep),
+    4px 5px 0 var(--ink);
+}
+
+.sketch-stroke,
+.sketch-arrow {
+  --sketch-rotation: -4deg;
+  position: relative;
+  display: block;
+  width: 4.5rem;
+  height: 0.12rem;
+  color: var(--marker);
+  background: currentColor;
+  border-radius: 999px;
+  transform: rotate(var(--sketch-rotation)) scaleX(1);
+  transform-origin: left center;
+  animation: sketch-draw 700ms ease-out both;
+}
+
+.sketch-stroke::after {
+  position: absolute;
+  right: 0.3rem;
+  bottom: -0.24rem;
+  width: 70%;
+  height: 0.1rem;
+  content: "";
+  background: currentColor;
+  border-radius: 999px;
+  opacity: 0.45;
+  transform: rotate(3deg);
+}
+
+.sketch-arrow::before,
+.sketch-arrow::after {
+  position: absolute;
+  right: -0.05rem;
+  width: 0.7rem;
+  height: 0.12rem;
+  content: "";
+  background: currentColor;
+  border-radius: 999px;
+  transform-origin: right center;
+}
+
+.sketch-arrow::before {
+  transform: rotate(32deg);
+}
+
+.sketch-arrow::after {
+  transform: rotate(-32deg);
+}
+
+@keyframes sketch-draw {
+  from {
+    opacity: 0;
+    transform: rotate(var(--sketch-rotation)) scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(var(--sketch-rotation)) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .sketch-underline::after,
+  .sketch-stroke,
+  .sketch-arrow {
+    animation: none;
+  }
 }

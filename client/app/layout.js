@@ -1,4 +1,4 @@
-import { Inter, Poppins } from "next/font/google";
+import { Caveat, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/react'
 import { ProgressBarProvider } from "./contexts/ProgressBarContext";
@@ -13,6 +13,12 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-caveat",
 });
 
 export const metadata = {
@@ -64,7 +70,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${poppins.variable} ${caveat.variable}`}
+    >
       <body>
         <ProgressBarProvider>
           {children}

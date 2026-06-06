@@ -3,39 +3,40 @@
 Use this file to preserve context when work is paused, handed off, or moved to a new agent session.
 
 ## Goal
-Temporarily hide the Projects section from the active portfolio UI while keeping
-the existing project components and assets available for later re-enablement.
+Implement the modern sketchbook redesign on `feature/sketchbook-redesign` in
+reviewable checkpoints.
 
 ## Current status
-Complete. Projects is no longer rendered on the homepage and no longer appears
-in desktop or mobile navigation.
+Checkpoint 1, Sketchbook Visual Foundation, is implemented and awaiting visual
+approval before its focused commit.
+
+## Completed work
+- Added warm paper, charcoal ink, muted ink, and blue marker design tokens.
+- Removed system dark-mode styling so the site remains light.
+- Added Caveat through `next/font/google` for annotation use only.
+- Added reusable highlight, underline, annotation, rough-panel, stroke, and arrow
+  primitives with reduced-motion behavior.
+- Updated the shared page width, responsive gutters, top offset, and section
+  spacing.
 
 ## Files touched
+- `client/app/globals.css`
+- `client/app/layout.js`
 - `client/app/page.js`
-- `client/app/components/Navbar.jsx`
-- `README.md`
-- `PROJECT_CONTEXT.md`
-- `PROJECT_PHASES.md`
-- `ARCHITECTURE_AND_DESIGN.md`
-- `MEMORY.md`
+- `client/tailwind.config.js`
 - `TASK_HANDOFF.md`
-
-## Decisions made
-- Keep `ProjectsSection.jsx` and related project components/assets in the repo.
-- Hide Projects because most current project work is internal/company-owned and
-  not suitable to show publicly yet.
-- Re-enable Projects later when there are enough public projects to show.
 
 ## Tests run
 - `cmd /c npm run lint` from `client/`: passed.
-- `cmd /c npm run build` from `client/`: passed.
+- `cmd /c npm run build` from `client/`: passed after allowing network access for
+  the new Caveat font.
 - `git diff --check`: passed with Git line-ending warnings only.
-- Confirmed no `#projects` or `ProjectSection` references remain in active
-  page/nav files.
 
-## Remaining work
-None for this pass.
+## Next checkpoint
+After checkpoint 1 approval and commit, redesign the navbar and hero while
+preserving their existing content and behavior.
 
 ## Risks / unknowns
-Build still reports the existing Browserslist data freshness notice; unrelated to
-this change.
+- Visual approval is pending; no automated browser screenshot tooling is
+  configured in this repository.
+- The production build reports the existing Browserslist freshness notice.

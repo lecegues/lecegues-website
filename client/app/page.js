@@ -11,13 +11,12 @@ import Footer from "./components/Footer";
  */
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-white">
-      <div className="container mx-auto">
+    <main className="flex min-h-screen flex-col bg-[var(--paper)] text-[var(--ink)]">
+      <div className="mx-auto w-full max-w-[90rem]">
         <Navbar />
       </div>
 
-      {/* Container for Main Section */}
-      <div className="container mt-24 mx-auto px-12 py-4 space-y-12">
+      <div className="mx-auto mt-20 w-full max-w-[90rem] space-y-16 px-5 py-6 sm:px-8 md:mt-24 md:space-y-24 md:px-12 lg:px-16 xl:px-20">
         <HeroSection id="hero" />
         <ExperienceSection id="experience" />
         <ContactSection id="contact" />

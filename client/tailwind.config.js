@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)'],
-        mono: ['var(--font-poppins)']
+        mono: ['var(--font-poppins)'],
+        handwriting: ['var(--font-caveat)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
