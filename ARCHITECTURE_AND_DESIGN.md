@@ -6,8 +6,8 @@ The production-relevant app is the Next.js frontend in `client/`.
 
 - Framework: Next.js App Router.
 - UI: React components under `client/app/components/`.
-- Styling: Tailwind CSS plus `client/app/globals.css` and a small legacy
-  `client/styles/LandingPage.css` import.
+- Styling: Tailwind CSS plus shared visual tokens and sketch primitives in
+  `client/app/globals.css`.
 - Animations: Framer Motion and `react-type-animation`.
 - Contact delivery: EmailJS client-side send from `ContactSection.jsx`.
 - Analytics: `@vercel/analytics/react` in `client/app/layout.js`.
@@ -61,16 +61,20 @@ that part of the project.
 
 ## Design Direction
 
-The current visual design is a clean light portfolio:
+The current visual design is a professional modern sketchbook:
 
-- White background.
-- Dark gray primary text (`#37444B`).
-- Blue accent (`#4A90E2`).
-- Tailwind utility classes for spacing, layout, color, and responsiveness.
-- Rounded controls and subtle borders.
+- Warm-white paper background with charcoal and muted ink text.
+- Blue marker as the only primary accent.
+- Inter and Poppins for normal content, with Caveat limited to annotations.
+- Reusable CSS primitives for drawn highlights, underlines, rough panels,
+  controls, arrows, and decorative strokes.
+- A pinned-photo hero treatment and work-notebook Experience spread.
+- Light-only presentation regardless of system color scheme.
+- Responsive decorative restraint and explicit reduced-motion behavior.
 
-Keep design changes consistent with this restrained portfolio style. Avoid broad
-visual rewrites unless the user asks for a redesign.
+Keep future design changes consistent with this restrained sketchbook system.
+Prefer existing CSS primitives and code-native decorative treatments over new
+illustration or runtime dependencies.
 
 ## Development Commands
 
@@ -93,7 +97,7 @@ From `client/`:
   dashes, and multiplication symbols.
 - `client/package.json` uses Next `^16.1.6` while `eslint-config-next` is pinned
   to `14.0.4`; verify lint/build behavior before relying on tooling changes.
-- `globals.css` references `--background-end-rgb`, but only
-  `--background-start-rgb` is defined in the inspected file.
 - The contact form contains EmailJS service/template/public key values in source.
   Treat contact integration changes carefully and avoid committing secrets.
+- `next/font` fetches Inter, Poppins, and Caveat during production builds, so a
+  build may require network access.

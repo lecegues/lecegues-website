@@ -39,3 +39,13 @@ Near-term work should focus on:
 - Improving responsiveness, accessibility, and content clarity.
 - Preserving a fast static/frontend deployment path on Vercel.
 - Treating the backend folder as inactive unless explicitly revived.
+
+## Current Design Direction
+
+The visible portfolio uses a professional modern-sketchbook design:
+
+- Warm-white paper background with charcoal ink and muted ink text.
+- Blue marker as the only primary accent.
+- Caveat handwriting limited to annotations and callouts.
+- Code-native rough borders, highlights, strokes, and taped-photo treatments.
+- Light-only presentation with responsive and reduced-motion behavior.

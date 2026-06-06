@@ -12,17 +12,21 @@ The current site is a Vercel-hosted frontend portfolio. It presents:
 - Contact form powered by EmailJS.
 - Footer and social links.
 
-## Phase 2: Portfolio Polish
+## Phase 2: Portfolio Polish and Sketchbook Redesign
 
-Status: Likely next work
+Status: Complete
 
 Improve the current frontend without changing the core architecture.
 
-- Clean up text encoding issues visible in some source strings.
-- Improve accessibility for buttons, links, form states, and mobile navigation.
-- Add clearer success/error UI for contact form submission instead of browser alerts.
-- Review responsive layout across mobile, tablet, and desktop.
-- Update project content as resume, experience, and portfolio goals evolve.
+- Established a cohesive modern-sketchbook visual system.
+- Redesigned the navbar, hero, experience, contact, and footer.
+- Improved keyboard focus, mobile navigation, form states, and reduced-motion
+  behavior.
+- Preserved the frontend-only deployment, existing content, EmailJS flow,
+  analytics, and hidden Projects components.
+
+Future polish should focus on keeping content accurate and reviewing the page at
+mobile, tablet, and desktop sizes as the portfolio evolves.
 
 ## Phase 3: Projects Section
 

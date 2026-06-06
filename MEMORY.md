@@ -19,11 +19,19 @@
 
 ## Project Conventions
 
-- Prefer small, direct frontend changes that preserve the existing portfolio style.
+- Prefer small, direct frontend changes that preserve the modern-sketchbook
+  portfolio style.
 - Use Tailwind utility classes and existing component patterns before adding new
   styling systems or abstractions.
-- Keep social symbols dark because the portfolio uses a white background
-  regardless of user/system theme.
+- Keep the portfolio light-only with a warm-paper background, charcoal ink, and
+  blue as the only primary accent.
+- Limit Caveat handwriting to annotations and callouts; use Inter/Poppins for
+  normal content.
+- Reuse the code-native sketch primitives in `client/app/globals.css` before
+  adding new decorative patterns or dependencies.
+- Keep decorative rotations, shadows, and annotations restrained on narrow
+  screens and respect reduced-motion preferences.
+- Keep social symbols dark so they remain legible on the light paper background.
 - Keep backend, auth, database, environment, lockfile, and infrastructure changes
   out of scope unless the user explicitly approves them.
 - Update project docs when durable architecture or workflow facts change.
@@ -37,5 +45,5 @@
   workflow is the frontend in `client/`.
 - On this Windows environment, PowerShell blocks `npm.ps1`; use `cmd /c npm ...`
   for npm verification commands.
-- `next build` may need network access because `next/font` fetches Google Fonts
-  during the build.
+- `next build` may need network access because `next/font` fetches Inter, Poppins,
+  and Caveat during the build.
