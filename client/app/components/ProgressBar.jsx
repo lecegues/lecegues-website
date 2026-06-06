@@ -5,14 +5,14 @@ const ProgressBar = () => {
   const { progressPercentage } = useContext(ProgressBarContext);
 
   return (
-    <div className="w-full bg-white h-1">
+    <div className="h-1 w-full bg-transparent" aria-hidden="true">
       <div
-        className="bg-blue-600 h-1 "
+        className="h-1 bg-[var(--marker)]"
         style={{
           width: `${progressPercentage}%`,
           transition: "width 0.5s ease",
         }}
-      ></div>
+      />
     </div>
   );
 };

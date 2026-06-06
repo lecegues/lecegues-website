@@ -13,7 +13,10 @@ import NavLink from "./NavLink";
  */
 const MenuOverlay = ({ links, id }) => {
   return (
-    <ul id={id} className="flex flex-col py-4 items-center">
+    <ul
+      id={id}
+      className="mx-5 flex flex-col items-center gap-1 border-t border-[var(--ink)]/25 py-4 md:hidden"
+    >
       {links.map((link, index) => (
         <li key={index}>
           <NavLink href={link.path} title={link.title} />

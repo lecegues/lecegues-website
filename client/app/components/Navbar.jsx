@@ -28,67 +28,59 @@ const navLinks = [
  * To be provided in all pages
  */
 const Navbar = () => {
-  // useState to manage visibility of the mobile navigation menu
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-white">
-      <div className=" flex flex-wrap items-center justify-between px-5 py-3 mx-3">
-        {/* Website Logo to lead back to home page */}
-        <Link
-          href={"/"}
-          className="text-2xl md:text-4xl text-[#37444B] font-sans font-semibold"
-        >
-          Lecegues
-        </Link>
+    <nav className="fixed left-0 right-0 top-0 z-10 px-3 pt-2 sm:px-5">
+      <div className="mx-auto max-w-[90rem] border-b-2 border-[var(--ink)] bg-[var(--paper)]/95 shadow-[0_4px_0_var(--paper-deep)] backdrop-blur-sm">
+        <div className="flex min-h-14 items-center justify-between px-3 sm:px-5">
+          <Link
+            href="/"
+            className="sketch-highlight text-xl font-bold tracking-tight text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--marker)] sm:text-2xl"
+          >
+            Lecegues
+          </Link>
 
-        {/* Container for the mobile menu (e.g. a popup menu) */}
-        {/* default: shown, md: hide */}
-        <div className="mobile-menu block md:hidden">
-          {/* When navbar is closed, if clicked open */}
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              aria-label="Open navigation menu"
-              aria-controls="mobile-menu"
-              aria-expanded={navbarOpen}
-              className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200"
-            >
-              <Bars3Icon className="h-5 w-5" />
-            </button>
-          ) : (
-            /* When navbar is open, if clicked then close */
-            <button
-              onClick={() => setNavbarOpen(false)}
-              aria-label="Close navigation menu"
-              aria-controls="mobile-menu"
-              aria-expanded={navbarOpen}
-              className="flex items-center px-3 py-2 border rounded border-black text-black hover:text-gray-200 hover:border-gray-200"
-            >
-              <XMarkIcon className="h-5 w-5" />
-            </button>
-          )}
+          <div className="block md:hidden">
+            {!navbarOpen ? (
+              <button
+                type="button"
+                onClick={() => setNavbarOpen(true)}
+                aria-label="Open navigation menu"
+                aria-controls="mobile-menu"
+                aria-expanded={navbarOpen}
+                className="sketch-icon-button"
+              >
+                <Bars3Icon className="h-5 w-5" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setNavbarOpen(false)}
+                aria-label="Close navigation menu"
+                aria-controls="mobile-menu"
+                aria-expanded={navbarOpen}
+                className="sketch-icon-button"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
+            )}
+          </div>
+
+          <div className="hidden font-mono md:block md:w-auto" id="navbar">
+            <ul className="flex items-center gap-7">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <NavLink href={link.path} title={link.title} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Container for Website Menu */}
-        {/* default: hidden, md: show */}
-        <div
-          className="menu hidden md:block md:w-auto font-mono font-semibold"
-          id="navbar"
-        >
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {navbarOpen ? <MenuOverlay links={navLinks} id="mobile-menu" /> : null}
+        <ProgressBar />
       </div>
-
-      <ProgressBar />
-      {/* If mobile navBar is open, then show mobile menu */}
-      {navbarOpen ? <MenuOverlay links={navLinks} id="mobile-menu" /> : null}
     </nav>
   );
 };

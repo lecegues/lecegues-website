@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import "../../styles/LandingPage.css";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -14,24 +13,24 @@ import Image from "next/image";
  */
 const HeroSection = () => {
   return (
-    <section className="py-8 pb-8 2xl:pb-56" id="hero">
-      {/* Animate initial transition for whole section: fade in */}
-      {/* Single section on small screens, two sections on big screens */}
+    <section className="pb-10 pt-8 md:pb-16 md:pt-12 lg:pb-24" id="hero">
       <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="grid grid-cols-1 lg:grid-cols-12"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8"
       >
-        {/* First 7/12 columns (left side) */}
-        <div className="col-span-7 place-self-center font-mono font-normal">
-          {/* Header*/}
-          <h1 className="text-[#37444B] mb-2 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.25] md:leading-[1.25] lg:leading-[1.25]">
-            Hello, I&apos;m <span className="text-[#4A90E2]">John</span>.
+        <div className="lg:col-span-7 lg:pr-6">
+          <p className="sketch-annotation mb-2 text-[var(--marker)]">
+            a software engineer&apos;s field notes
+          </p>
+
+          <h1 className="mb-5 font-mono text-4xl font-extrabold leading-[1.18] text-[var(--ink)] sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-7xl">
+            Hello, I&apos;m{" "}
+            <span className="sketch-highlight text-[var(--marker)]">John</span>.
             <br />
             I help teams{" "}
-            {/* Animated Header Typing Animation */}
-            <span className="text-[#4A90E2] block mt-1">
+            <span className="mt-2 block min-h-[1.2em] text-[var(--marker)]">
               <TypeAnimation
                 sequence={[
                   "ship software",
@@ -51,40 +50,33 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* SubHeader */}
-          <p className="text-[#37444B] text-lg mb-6 lg:text-xl">
+          <p className="max-w-3xl text-base leading-relaxed text-[var(--ink-muted)] sm:text-lg lg:text-xl">
             Early-career engineer experienced across the full software lifecycle,
             from backend services and frontend interfaces to CI/CD workflows and
             business automation. I&apos;ve shipped production changes, improved
             processes, and collaborated across teams to support real users.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap items-center gap-4 mt-4">
-            {/* Resume Button */}
+          <div className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-12 py-3 rounded-xl bg-[#4A90E2] hover:bg-[#63a4ff] text-white font-semibold transition"
+              className="sketch-button sketch-button-primary"
             >
               Resume
             </a>
 
-            {/* Contact Button */}
-            <Link href="#contact">
-              <button className="px-10 py-3 rounded-xl bg-transparent hover:bg-[#d0d0d0] text-black border border-black font-semibold transition">
-                Contact
-              </button>
+            <Link href="#contact" className="sketch-button">
+              Contact
             </Link>
 
-            {/* LinkedIn Icon */}
             <Link
               href="https://www.linkedin.com/in/john-lecegues/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit John's LinkedIn profile"
-              className="p-2 border border-black rounded-full hover:bg-gray-100 transition"
+              className="sketch-icon-button h-11 w-11"
             >
               <Image
                 src={LinkedinIcon}
@@ -96,16 +88,34 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Last 5/12 columns (right side) */}
-        <div className="col-span-5 flex justify-center lg:justify-end mt-8 lg:mt-0">
-          <div className="w-[250px] h-[250px] sm:w-[325px] sm:h-[325px] md:w-[400px] md:h-[400px] relative">
-            <Image
-              src="/images/john.jpeg"
-              alt="Portrait of John"
-              fill
-              className="rounded-full object-cover shadow-lg"
-              priority
-            />
+        <div className="mx-auto flex w-full max-w-md flex-col items-center lg:col-span-5 lg:items-end">
+          <div className="pinned-photo w-[min(82vw,22rem)] rotate-[2deg] sm:w-[22rem] lg:w-full lg:max-w-[25rem]">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[var(--paper-deep)]">
+              <Image
+                src="/images/john.jpeg"
+                alt="Portrait of John"
+                fill
+                sizes="(max-width: 1024px) 352px, 400px"
+                className="object-cover"
+                priority
+              />
+            </div>
+            <p className="sketch-annotation mt-3 text-center text-[var(--ink)]">
+              building useful things, one page at a time
+            </p>
+          </div>
+
+          <div className="mt-8 grid w-full max-w-sm gap-4 sm:grid-cols-2 lg:mr-2 lg:max-w-md">
+            <div className="hero-note -rotate-2">
+              <span className="text-[var(--marker)]">currently:</span>
+              <br />
+              Peace Hills Insurance
+            </div>
+            <div className="hero-note rotate-1">
+              <span className="text-[var(--marker)]">next:</span>
+              <br />
+              CPP Investments / Winter 2027
+            </div>
           </div>
         </div>
       </motion.div>
