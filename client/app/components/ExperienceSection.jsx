@@ -24,7 +24,7 @@ const ExperienceSection = () => {
         org: "Peace Hills Insurance",
         location: "Edmonton, AB",
         start: "May 2026",
-        end: "Aug 2026",
+        end: "Current",
         tags: ["AI RAG", "AWS", "Python", "Java"],
         bullets: [
           "Implementing regulatory Guidewire updates in Java, ensuring system compliance for 1,000+ brokers",
@@ -39,7 +39,7 @@ const ExperienceSection = () => {
         org: "Mindrift",
         location: "Remote",
         start: "Jan 2026",
-        end: "Current",
+        end: "Apr 2026",
         tags: ["AI", "Testing"],
         bullets: [
           "Contributed to multiple AI projects by evaluating LLM-based agents across different domains, generating and assessing multi-turn prompts for response quality, intent alignment, and factual accuracy",
@@ -48,7 +48,7 @@ const ExperienceSection = () => {
       {
         id: "pcl-2025",
         type: "Work",
-        title: "Solution Delivery Student",
+        title: "Solution Delivery Intern",
         org: "PCL Construction",
         location: "Edmonton, AB",
         start: "May 2025",
