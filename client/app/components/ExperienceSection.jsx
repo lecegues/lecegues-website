@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 
 const ExperienceSection = () => {
   const items = useMemo(
@@ -150,79 +155,80 @@ const ExperienceSection = () => {
 
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.12,
-      },
-    },
-  };
+  const container = shouldReduceMotion
+    ? {
+        hidden: {},
+        show: {},
+      }
+    : {
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren: 0.12,
+            delayChildren: 0.12,
+          },
+        },
+      };
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 14 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
-  const underline = {
-    hidden: { width: 0 },
-    show: {
-      width: "13rem",
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.15 },
-    },
-  };
+  const fadeUp = shouldReduceMotion
+    ? {
+        hidden: {},
+        show: {},
+      }
+    : {
+        hidden: { opacity: 0, y: 14 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.8, ease: "easeOut" },
+        },
+      };
 
   return (
     <motion.section
       ref={sectionRef}
-      className="py-16 text-[#37444B]"
+      className="py-12 text-[var(--ink)] md:py-16"
       id="experience"
       variants={container}
       initial="hidden"
       animate={isInView ? "show" : "hidden"}
     >
-      <motion.div className="flex flex-col gap-3 mb-10" variants={fadeUp}>
-        <div>
-          <h2 className="text-4xl font-mono font-bold text-[#37444B]">
-            Experience
-          </h2>
-
-          {/* Animated underline */}
-          <motion.div
-            className="h-1 rounded bg-[#4A90E2] mt-2"
-            variants={underline}
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-          />
-        </div>
-
-        <p className="text-[#6B7280] max-w-2xl">
+      <motion.div className="mb-10 flex flex-col gap-3 md:mb-14" variants={fadeUp}>
+        <p className="sketch-annotation text-[var(--marker)]">
+          selected pages from the work notebook
+        </p>
+        <h2 className="font-mono text-4xl font-bold text-[var(--ink)] sm:text-5xl">
+          <span className="sketch-underline">Experience</span>
+        </h2>
+        <p className="max-w-2xl text-[var(--ink-muted)]">
           Here are some highlights of my work experience & education
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {/* Timeline */}
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <div
-            className="relative pl-6"
+            className="relative pl-5 sm:pl-7"
             ref={(node) => {
               if (node) itemRefs.current.__timeline = node;
             }}
           >
-            {/* vertical line */}
-            <div className="absolute left-[11px] top-0 bottom-0 w-px bg-black/10" />
+            <div className="absolute bottom-0 left-[7px] top-0 w-px bg-[var(--ink)]/35 sm:left-[11px]" />
 
             <motion.div
-              className="absolute left-[6px] h-3 w-3 rounded-full bg-[#4A90E2]"
+              className="absolute left-[2px] h-3 w-3 rotate-45 border border-[var(--ink)] bg-[var(--marker)] sm:left-[6px]"
               animate={{ top: dotTop }}
-              transition={{ type: "spring", stiffness: 500, damping: 35 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { type: "spring", stiffness: 500, damping: 35 }
+              }
               style={{ willChange: "top" }}
             />
 
-            <ul className="space-y-5">
+            <ul className="space-y-3">
               {items.map((item, idx) => {
                 const isActive = item.id === activeId;
 
@@ -235,36 +241,39 @@ const ExperienceSection = () => {
                       type="button"
                       onClick={() => setActiveId(item.id)}
                       className={[
-                        "w-full text-left rounded-xl border transition-colors px-4 py-4",
+                        "experience-entry w-full px-3 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--marker)] sm:px-4",
                         isActive
-                          ? "border-black/15 bg-black/5"
-                          : "border-black/10 hover:border-black/20 hover:bg-black/5",
+                          ? "experience-entry-active"
+                          : "hover:bg-white/25",
                       ].join(" ")}
                       aria-current={isActive ? "true" : "false"}
                     >
-                      <div className="flex items-start justify-between gap-4 m-2">
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs uppercase tracking-wider text-[#6B7280]">
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ink-muted)]">
                               {item.type}
                             </span>
                             {idx === 0 && (
-                              <span className="text-xs rounded-full border border-black/10 px-2 py-0.5 text-[#6B7280]">
+                              <span className="sketch-highlight text-xs font-semibold text-[var(--ink-muted)]">
                                 Most recent
                               </span>
                             )}
                           </div>
-                          <h3 className="text-[#37444B] mt-1 text-lg font-semibold">
+                          <h3 className="mt-1 text-lg font-bold leading-snug text-[var(--ink)]">
                             {item.title}
                           </h3>
-                          <p className="text-[#6B7280]">
+                          <p className="mt-1 text-sm leading-snug text-[var(--ink-muted)] sm:text-base">
                             {item.org} - {item.location}
                           </p>
                         </div>
 
-                        <div className="text-right text-sm text-[#6B7280] whitespace-nowrap">
-                          <div>{item.start}</div>
-                          <div>{item.end}</div>
+                        <div className="flex gap-2 text-sm font-semibold text-[var(--ink-muted)] sm:block sm:whitespace-nowrap sm:text-right">
+                          <span>{item.start}</span>
+                          <span aria-hidden="true" className="sm:hidden">
+                            -
+                          </span>
+                          <span className="sm:block">{item.end}</span>
                         </div>
                       </div>
                     </button>
@@ -275,37 +284,39 @@ const ExperienceSection = () => {
           </div>
         </div>
 
-        {/* Details panel */}
         <motion.div className="lg:col-span-7" variants={fadeUp}>
-          <div className="rounded-2xl border border-black/10 bg-black/5 p-6 sm:p-8">
+          <div className="rough-panel relative p-5 sm:p-8 lg:sticky lg:top-28">
+            <p className="sketch-annotation mb-4 text-[var(--marker)]">
+              selected entry
+            </p>
             <AnimatePresence mode="wait">
               <motion.div
                 key={active?.id}
-                initial={{ opacity: 0, y: 8 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.18 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.18 }}
               >
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between gap-4 flex-wrap">
-                    <h3 className="text-2xl font-semibold text-[#37444B]">
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                    <h3 className="font-mono text-2xl font-bold leading-tight text-[var(--ink)] sm:text-3xl">
                       {active?.title}
                     </h3>
-                    <div className="text-sm text-[#6B7280]">
+                    <div className="shrink-0 text-sm font-semibold text-[var(--ink-muted)] sm:text-right">
                       {active?.start} - {active?.end}
                     </div>
                   </div>
 
-                  <p className="text-[#6B7280]">
+                  <p className="text-[var(--ink-muted)]">
                     {active?.org} - {active?.location}
                   </p>
 
                   {active?.tags?.length ? (
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div className="mt-2 flex flex-wrap gap-2">
                       {active.tags.map((t) => (
                         <span
                           key={t}
-                          className="text-xs rounded-full border border-black/10 px-3 py-1 text-[#37444B]"
+                          className="experience-tag text-xs font-semibold text-[var(--ink)]"
                         >
                           {t}
                         </span>
@@ -315,22 +326,18 @@ const ExperienceSection = () => {
                 </div>
 
                 {active?.bullets?.length ? (
-                  <ul className="mt-6 space-y-3 text-[#37444B] leading-relaxed">
+                  <ul className="mt-7 space-y-4 leading-relaxed text-[var(--ink)]">
                     {active.bullets.map((b, i) => (
                       <li key={i} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-black/30 flex-shrink-0" />
+                        <span className="mt-[0.65rem] h-2 w-2 shrink-0 rotate-45 bg-[var(--marker)]" />
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p className="mt-6 text-[#6B7280]"></p>
-                )}
+                ) : null}
               </motion.div>
             </AnimatePresence>
           </div>
-
-          <p className="mt-4 text-sm text-[#9CA3AF]"></p>
         </motion.div>
       </div>
     </motion.section>

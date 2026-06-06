@@ -7,27 +7,23 @@ Implement the modern sketchbook redesign on `feature/sketchbook-redesign` in
 reviewable checkpoints.
 
 ## Current status
-Checkpoint 1 is approved and committed. Checkpoint 2, Navbar and Hero Redesign,
-is implemented and awaiting visual approval before its focused commit.
+Checkpoints 1 and 2 are approved and committed. Checkpoint 3, Experience Notebook
+Redesign, is implemented and awaiting visual approval before its focused commit.
 
 ## Completed work
 - Committed checkpoint 1 as `b16b4dc` (`Establish sketchbook visual system`).
-- Redesigned the fixed navbar as a compact paper header with an ink rule and
-  blue-marker hover/focus treatments.
-- Preserved desktop links, mobile navigation state, and progress behavior.
-- Recomposed the hero into an asymmetric responsive text and portrait layout.
-- Preserved the headline, animated roles, description, portrait, resume,
-  contact, and LinkedIn actions.
-- Presented the portrait as a taped photograph with an imperfect ink frame.
-- Added the requested current and next employment annotations.
-- Restyled hero actions as sketchbook controls with visible focus states.
+- Committed checkpoint 2 as `c1c223e` (`Redesign navbar and hero`).
+- Restyled Experience as a work-notebook spread with an ink-rule timeline and
+  rough notebook details panel.
+- Preserved all experience data, timeline ordering, default selection, active
+  selection behavior, and detail transitions.
+- Added blue marker active states, clearer title/date hierarchy, outlined tags,
+  and ink-style bullet marks.
+- Improved mobile title, metadata, date, tag, and panel layout.
+- Added visible timeline focus states and reduced-motion handling.
 
 ## Files touched
-- `client/app/components/HeroSection.jsx`
-- `client/app/components/MenuOverlay.jsx`
-- `client/app/components/NavLink.jsx`
-- `client/app/components/Navbar.jsx`
-- `client/app/components/ProgressBar.jsx`
+- `client/app/components/ExperienceSection.jsx`
 - `client/app/globals.css`
 - `TASK_HANDOFF.md`
 
@@ -38,8 +34,8 @@ is implemented and awaiting visual approval before its focused commit.
 - `git diff --check`: passed with Git line-ending warnings only.
 
 ## Next checkpoint
-After checkpoint 2 approval and commit, redesign Experience as the central work
-notebook while preserving its data and interaction behavior.
+After checkpoint 3 approval and commit, redesign Contact and Footer while
+preserving EmailJS submission and progress behavior.
 
 ## Risks / unknowns
 - Visual approval is pending; no automated browser screenshot tooling is
